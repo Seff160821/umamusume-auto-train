@@ -44,7 +44,7 @@ export default function RaceFilters({ filterState }: Props) {
   } = filterState;
 
   return (
-    <div className="w-80 border-r bg-muted/20 p-6 overflow-y-auto">
+    <div className="w-60 border-r pr-6 overflow-y-auto">
       <div className="mb-6 flex justify-between">
         <div className="flex items-center gap-2">
           <Filter className="w-5 h-5 text-muted-foreground" />

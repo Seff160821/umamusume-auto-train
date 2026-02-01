@@ -4,7 +4,7 @@ import {
   Dumbbell,
   // Trophy, 
   Layout,
-  Unplug,
+  Cog,
   Calendar,
   Star,
   Flag
@@ -21,7 +21,7 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { id: "set-up", label: "Set-Up", icon: Unplug },
+  { id: "set-up", label: "Set-Up", icon: Cog },
   { id: "general", label: "General", icon: Settings },
   { id: "training", label: "Training", icon: Dumbbell },
   { id: "skills", label: "Skills", icon: Star },
@@ -54,7 +54,7 @@ export function Sidebar({ activeTab, setActiveTab, appVersion, eventCount, raceC
             {((item.id === "events" && (eventCount ?? 0) > 0) ||
               (item.id === "schedule" && (raceCount ?? 0) > 0) ||
               (item.id === "skills" && (skillCount ?? 0) > 0)) && (
-              <Badge variant="primary" className="text-xs px-2 justify-self-end">
+              <Badge variant="default" className="text-xs px-2 justify-self-end">
                 {item.id === "events" ? eventCount : item.id === "schedule" ? raceCount : skillCount}
               </Badge>
             )}

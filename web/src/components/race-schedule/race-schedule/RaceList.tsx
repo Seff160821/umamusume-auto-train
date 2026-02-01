@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Trophy } from "lucide-react";
 import type { RaceScheduleDataType, RaceScheduleType } from "@/types/race.type";
 import RaceFilters from "./RaceFilters";
 import RaceCalendar from "./RaceCalendar";
@@ -43,10 +42,8 @@ export default function RaceScheduleDialog({
 
   return (
     <>
-      <div className="px-6 py-4 border-b bg-gradient-to-r from-background to-muted/30 backdrop-blur-sm flex flex-row justify-between items-center">
+      <div className="absolute right-3 top-5 gap-2 flex flex-row justify-between items-center">
         <div className="flex items-center gap-3">
-          <Trophy className="w-6 h-6 text-primary" />
-          <h1>Race Schedule</h1>
           {raceSchedule.length > 0 && (
             <Badge variant="secondary">
               {raceSchedule.length} race{raceSchedule.length > 1 ? "s" : ""}{" "}
@@ -62,7 +59,6 @@ export default function RaceScheduleDialog({
           Clear All
         </Badge>
       </div>
-      <p>Race schedule selection dialog</p>
 
       <div className="flex-1 flex overflow-hidden">
         <RaceFilters filterState={filterState} />

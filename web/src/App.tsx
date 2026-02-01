@@ -20,7 +20,6 @@ import RaceScheduleSection from "./components/race-schedule/RaceScheduleSection"
 import RaceListSection from "./components/race-schedule/RaceListSection";
 import SkillSection from "./components/skill/SkillSection";
 import SkillListSection from "./components/skill/SkillListSection";
-import RaceStyleSection from "./components/race-style/RaceStyleSection";
 import TrainingSection from "./components/training/TrainingSection";
 import EnergySection from "./components/training/EnergySection";
 import MoodSection from "./components/training/MoodSection";
@@ -113,7 +112,6 @@ function App() {
       case "set-up": return <SetUpSection {...props} />;
       case "general": return <><EventSection {...props} /><RaceScheduleSection {...props} /><SkillSection {...props} /></>;
       case "training": return <><EnergySection {...props} /><MoodSection {...props} /><TrainingSection {...props} /></>;
-      case "race-style": return <RaceStyleSection {...props} />;
       case "skills": return <SkillListSection {...props} />;
       case "schedule": return <RaceListSection {...props} />;
       case "events": return <EventListSection {...props} />;

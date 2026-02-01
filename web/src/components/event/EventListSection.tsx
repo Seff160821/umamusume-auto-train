@@ -106,7 +106,7 @@ export default function EventSection({ config, updateConfig }: Props) {
   }, [data]);
 
   return (
-    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/20">
+    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/80">
       <h2 className="text-3xl font-semibold mb-6 flex items-center gap-3">
         <TicketsIcon className="text-primary" /> Event Database
       </h2>

@@ -1,4 +1,4 @@
-import { List } from "lucide-react";
+import { ListTodo } from "lucide-react";
 import SelectedEventList from "./SelectedEventList";
 import Tooltips from "@/components/_c/Tooltips";
 import type { EventChoicesType, EventData } from "@/types/event.type";
@@ -107,9 +107,9 @@ export default function EventSection({ config, updateConfig }: Props) {
   }, [data]);
 
   return (
-    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/20">
+    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/80">
       <h2 className="text-3xl font-semibold mb-6 flex items-center gap-3">
-        <List className="text-primary" /> Events
+        <ListTodo className="text-primary" /> Events
       </h2>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-2">
         <label className="flex gap-2 items-center cursor-pointer">

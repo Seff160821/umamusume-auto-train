@@ -1,4 +1,4 @@
-import { BarChart3 } from "lucide-react";
+import { Dumbbell } from "lucide-react";
 import type { Config, UpdateConfigType } from "@/types";
 import { Input } from "../ui/input";
 import {
@@ -52,33 +52,14 @@ export default function TrainingSection({ config, updateConfig }: Props) {
   };
 
   return (
-    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/20">
+    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/80">
       <h2 className="text-3xl font-semibold mb-6 flex items-center gap-3">
-        <BarChart3 className="text-primary" />
+        <Dumbbell className="text-primary" />
         Training
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
         <div className="flex flex-col gap-2">
-          <div className="w-fit">
-            <label htmlFor="priority-weight" className="flex flex-col gap-2">
-              <span className="font-semibold">Priority Weight Level:</span>
-              <RadioGroup
-                value={priority_weight}
-                onValueChange={(val) => updateConfig("priority_weight", val)}
-              >
-                {Object.entries(PRIORITY_WEIGHT).map(([weight, description]) => (
-                  <div key={weight} className="flex items-center gap-2">
-                    <RadioGroupItem value={weight} id={weight} />
-                    <label htmlFor={weight} className="cursor-pointer capitalize">
-                      {weight}
-                    </label>
-                    <Tooltips>{description}</Tooltips>
-                  </div>
-                ))}
-              </RadioGroup>
-            </label>
-          </div>
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 mb-2">
             <div className="flex flex-col gap-2 w-fit">
               <p className="font-semibold">Priority Stat</p>
               <DndContext
@@ -100,25 +81,75 @@ export default function TrainingSection({ config, updateConfig }: Props) {
             </div>
             <div className="flex flex-col gap-2 w-fit">
               <p className="font-semibold">Priority Multiplier</p>
-                {Array.from({ length: 5 }, (_, i) => (
-                  <Input
-                    className="w-20"
-                    type="number"
-                    key={i}
-                    step={0.05}
-                    value={priority_weights[i]}
-                    onChange={(e) => {
-                      const newWeights = [...priority_weights];
-                      newWeights[i] = e.target.valueAsNumber;
-                      updateConfig("priority_weights", newWeights);
-                    }}
-                  />
-                ))}
+              {Array.from({ length: 5 }, (_, i) => (
+                <Input
+                  className="w-20"
+                  type="number"
+                  key={i}
+                  step={0.05}
+                  value={priority_weights[i]}
+                  onChange={(e) => {
+                    const newWeights = [...priority_weights];
+                    newWeights[i] = e.target.valueAsNumber;
+                    updateConfig("priority_weights", newWeights);
+                  }}
+                />
+              ))}
 
             </div>
           </div>
+          <div className="w-fit">
+            <label htmlFor="priority-weight" className="flex flex-col gap-2">
+              <span className="font-semibold">Priority Weight Level:</span>
+              <RadioGroup
+                value={priority_weight}
+                onValueChange={(val) => updateConfig("priority_weight", val)}
+              >
+                {Object.entries(PRIORITY_WEIGHT).map(([weight, description]) => (
+                  <div key={weight} className="flex items-center gap-2">
+                    <RadioGroupItem value={weight} id={weight} />
+                    <label htmlFor={weight} className="cursor-pointer capitalize">
+                      {weight}
+                    </label>
+                    <Tooltips>{description}</Tooltips>
+                  </div>
+                ))}
+              </RadioGroup>
+            </label>
+          </div>
         </div>
         <div className="flex flex-col gap-2">
+
+          <div className="flex items-center gap-2">
+            <label htmlFor="hint-hunting" className="flex gap-2 items-center cursor-pointer">
+              <Checkbox
+                id="hint-hunting"
+                checked={hint_hunting_enabled}
+                onCheckedChange={() =>
+                  updateConfig("hint_hunting_enabled", !hint_hunting_enabled)
+                }
+              />
+              Enable Hint Hunting
+            </label>
+          </div>
+          {hint_hunting_enabled && (
+            <div className="flex flex-col gap-2 mb-2">
+              {Object.entries(hint_hunting_weights).map(([stat, val]) => (
+                <label key={stat} className="flex items-center gap-4 cursor-pointer">
+                  <span className="inline-block w-16">{stat.toUpperCase()}</span>
+                  <Input
+                    className="w-24"
+                    type="number"
+                    value={val}
+                    min={0}
+                    step={0.1}
+                    onChange={(e) => updateConfig("hint_hunting_weights", { ...hint_hunting_weights, [stat]: isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber, })}
+                  />
+                </label>
+              ))}
+            </div>
+          )}
+
           <label className="flex flex-row gap-2 w-fit items-center cursor-pointer">
             Wit Training Treshold
             <Input
@@ -178,23 +209,14 @@ export default function TrainingSection({ config, updateConfig }: Props) {
             />
           </label>
 
-          <div className="flex items-center gap-2">
-              <label htmlFor="hint-hunting" className="flex gap-2 items-center cursor-pointer">
-                <Checkbox
-                  id="hint-hunting"
-                  checked={hint_hunting_enabled}
-                  onCheckedChange={() =>
-                    updateConfig("hint_hunting_enabled", !hint_hunting_enabled)
-                  }
-                />
-                <span className="font-semibold">
-                  Enable Hint Hunting
-                </span>
-              </label>
-            </div>
-            {hint_hunting_enabled && (
+
+        </div>
+        <div className="flex flex-col gap-2">
+
+          <div className="flex flex-col gap-2 w-fit">
+            <p className="font-semibold">Stat Caps</p>
             <div className="flex flex-col gap-2">
-              {Object.entries(hint_hunting_weights).map(([stat, val]) => (
+              {Object.entries(stat_caps).map(([stat, val]) => (
                 <label key={stat} className="flex items-center gap-4 cursor-pointer">
                   <span className="inline-block w-16">{stat.toUpperCase()}</span>
                   <Input
@@ -202,38 +224,15 @@ export default function TrainingSection({ config, updateConfig }: Props) {
                     type="number"
                     value={val}
                     min={0}
-                    step={0.1}
-                    onChange={(e) => updateConfig("hint_hunting_weights", {...hint_hunting_weights,[stat]: isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber,})}
+                    onChange={(e) =>
+                      updateConfig("stat_caps", { ...stat_caps, [stat]: isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber, })}
                   />
                 </label>
               ))}
             </div>
-            )}
+          </div>
 
-          
-        </div>
-        <div className="flex flex-col gap-2">
-          
-            <div className="flex flex-col gap-2 w-fit">
-              <p className="font-semibold">Stat Caps</p>
-              <div className="flex flex-col gap-2">
-                {Object.entries(stat_caps).map(([stat, val]) => (
-                  <label key={stat} className="flex items-center gap-4 cursor-pointer">
-                    <span className="inline-block w-16">{stat.toUpperCase()}</span>
-                    <Input
-                      className="w-24"
-                      type="number"
-                      value={val}
-                      min={0}
-                      onChange={(e) =>
-                        updateConfig("stat_caps", { ...stat_caps, [stat]: isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber,})}
-                    />
-                  </label>
-                ))}
-              </div>
-            </div>
-          
-          
+
         </div>
       </div>
     </div>

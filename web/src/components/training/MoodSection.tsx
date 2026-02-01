@@ -1,4 +1,4 @@
-import { BarChart3 } from "lucide-react";
+import { Heart } from "lucide-react";
 import type { Config, UpdateConfigType } from "@/types";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MOOD } from "@/constants";
@@ -12,9 +12,9 @@ export default function TrainingSection({ config, updateConfig }: Props) {
   const { minimum_mood, minimum_mood_junior_year } = config;
 
   return (
-    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/20">
+    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/80">
       <h2 className="text-3xl font-semibold mb-6 flex items-center gap-3">
-        <BarChart3 className="text-primary" />
+        <Heart className="text-primary" />
         Mood
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">

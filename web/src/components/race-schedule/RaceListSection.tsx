@@ -1,4 +1,4 @@
-import { AlertCircle, ChevronsRight } from "lucide-react";
+import { AlertCircle, Trophy } from "lucide-react";
 import RaceSchedule from "./RaceSchedule";
 import { Button } from "@/components/ui/button";
 import type { Config, UpdateConfigType } from "@/types";
@@ -15,10 +15,10 @@ export default function RaceScheduleSection({ config, updateConfig }: Props) {
   } = config;
 
   return (
-    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/80">
+    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/80 relative">
       <div className="flex flex-row">
       <h2 className="text-3xl font-semibold mb-6 flex items-center gap-3">
-        <ChevronsRight className="text-primary" />
+        <Trophy className="text-primary" />
         Race Schedule
       </h2>
       {!use_race_schedule && ( 

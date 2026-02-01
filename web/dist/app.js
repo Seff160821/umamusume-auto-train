@@ -15963,7 +15963,7 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$z = [
+const __iconNode$y = [
   [
     "path",
     {
@@ -15984,55 +15984,44 @@ const __iconNode$z = [
   ["circle", { cx: "20", cy: "21", r: ".5", key: "yhc1fs" }],
   ["circle", { cx: "20", cy: "8", r: ".5", key: "1e43v0" }]
 ];
-const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$z);
+const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$y);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$y = [
+const __iconNode$x = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
   ["path", { d: "M3 10h18", key: "8toen8" }]
 ];
-const Calendar = createLucideIcon("calendar", __iconNode$y);
+const Calendar = createLucideIcon("calendar", __iconNode$x);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$x = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$x);
+const __iconNode$w = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$w);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$w = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$w);
+const __iconNode$v = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$v);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$v = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$v);
-/**
- * @license lucide-react v0.541.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$u = [
-  ["path", { d: "m6 17 5-5-5-5", key: "xnjwq" }],
-  ["path", { d: "m13 17 5-5-5-5", key: "17xmmf" }]
-];
-const ChevronsRight = createLucideIcon("chevrons-right", __iconNode$u);
+const __iconNode$u = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$u);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
@@ -19727,7 +19716,7 @@ function Sidebar({ activeTab, setActiveTab, appVersion, eventCount, raceCount, s
         children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(item.icon, { className: "w-4 h-4 justify-self-start" }),
           item.label,
-          (item.id === "events" && (eventCount ?? 0) > 0 || item.id === "schedule" && (raceCount ?? 0) > 0 || item.id === "skills" && (skillCount ?? 0) > 0) && /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { variant: "outline", className: "text-xs px-2 justify-self-end", children: item.id === "events" ? eventCount : item.id === "schedule" ? raceCount : skillCount })
+          (item.id === "events" && (eventCount ?? 0) > 0 || item.id === "schedule" && (raceCount ?? 0) > 0 || item.id === "skills" && (skillCount ?? 0) > 0) && /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { variant: "default", className: "text-xs px-2 justify-self-end", children: item.id === "events" ? eventCount : item.id === "schedule" ? raceCount : skillCount })
         ]
       },
       item.id
@@ -25029,6 +25018,277 @@ function getElementRef$1(element) {
   }
   return element.props.ref || element.ref;
 }
+var CHECKBOX_NAME = "Checkbox";
+var [createCheckboxContext, createCheckboxScope] = createContextScope(CHECKBOX_NAME);
+var [CheckboxProviderImpl, useCheckboxContext] = createCheckboxContext(CHECKBOX_NAME);
+function CheckboxProvider(props) {
+  const {
+    __scopeCheckbox,
+    checked: checkedProp,
+    children,
+    defaultChecked,
+    disabled,
+    form,
+    name,
+    onCheckedChange,
+    required: required2,
+    value = "on",
+    // @ts-expect-error
+    internal_do_not_use_render
+  } = props;
+  const [checked, setChecked] = useControllableState({
+    prop: checkedProp,
+    defaultProp: defaultChecked ?? false,
+    onChange: onCheckedChange,
+    caller: CHECKBOX_NAME
+  });
+  const [control, setControl] = reactExports.useState(null);
+  const [bubbleInput, setBubbleInput] = reactExports.useState(null);
+  const hasConsumerStoppedPropagationRef = reactExports.useRef(false);
+  const isFormControl = control ? !!form || !!control.closest("form") : (
+    // We set this to true by default so that events bubble to forms without JS (SSR)
+    true
+  );
+  const context = {
+    checked,
+    disabled,
+    setChecked,
+    control,
+    setControl,
+    name,
+    form,
+    value,
+    hasConsumerStoppedPropagationRef,
+    required: required2,
+    defaultChecked: isIndeterminate(defaultChecked) ? false : defaultChecked,
+    isFormControl,
+    bubbleInput,
+    setBubbleInput
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    CheckboxProviderImpl,
+    {
+      scope: __scopeCheckbox,
+      ...context,
+      children: isFunction(internal_do_not_use_render) ? internal_do_not_use_render(context) : children
+    }
+  );
+}
+var TRIGGER_NAME$3 = "CheckboxTrigger";
+var CheckboxTrigger = reactExports.forwardRef(
+  ({ __scopeCheckbox, onKeyDown, onClick, ...checkboxProps }, forwardedRef) => {
+    const {
+      control,
+      value,
+      disabled,
+      checked,
+      required: required2,
+      setControl,
+      setChecked,
+      hasConsumerStoppedPropagationRef,
+      isFormControl,
+      bubbleInput
+    } = useCheckboxContext(TRIGGER_NAME$3, __scopeCheckbox);
+    const composedRefs = useComposedRefs(forwardedRef, setControl);
+    const initialCheckedStateRef = reactExports.useRef(checked);
+    reactExports.useEffect(() => {
+      const form = control?.form;
+      if (form) {
+        const reset = () => setChecked(initialCheckedStateRef.current);
+        form.addEventListener("reset", reset);
+        return () => form.removeEventListener("reset", reset);
+      }
+    }, [control, setChecked]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.button,
+      {
+        type: "button",
+        role: "checkbox",
+        "aria-checked": isIndeterminate(checked) ? "mixed" : checked,
+        "aria-required": required2,
+        "data-state": getState$2(checked),
+        "data-disabled": disabled ? "" : void 0,
+        disabled,
+        value,
+        ...checkboxProps,
+        ref: composedRefs,
+        onKeyDown: composeEventHandlers(onKeyDown, (event2) => {
+          if (event2.key === "Enter") event2.preventDefault();
+        }),
+        onClick: composeEventHandlers(onClick, (event2) => {
+          setChecked((prevChecked) => isIndeterminate(prevChecked) ? true : !prevChecked);
+          if (bubbleInput && isFormControl) {
+            hasConsumerStoppedPropagationRef.current = event2.isPropagationStopped();
+            if (!hasConsumerStoppedPropagationRef.current) event2.stopPropagation();
+          }
+        })
+      }
+    );
+  }
+);
+CheckboxTrigger.displayName = TRIGGER_NAME$3;
+var Checkbox$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      __scopeCheckbox,
+      name,
+      checked,
+      defaultChecked,
+      required: required2,
+      disabled,
+      value,
+      onCheckedChange,
+      form,
+      ...checkboxProps
+    } = props;
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      CheckboxProvider,
+      {
+        __scopeCheckbox,
+        checked,
+        defaultChecked,
+        disabled,
+        required: required2,
+        onCheckedChange,
+        name,
+        form,
+        value,
+        internal_do_not_use_render: ({ isFormControl }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            CheckboxTrigger,
+            {
+              ...checkboxProps,
+              ref: forwardedRef,
+              __scopeCheckbox
+            }
+          ),
+          isFormControl && /* @__PURE__ */ jsxRuntimeExports.jsx(
+            CheckboxBubbleInput,
+            {
+              __scopeCheckbox
+            }
+          )
+        ] })
+      }
+    );
+  }
+);
+Checkbox$1.displayName = CHECKBOX_NAME;
+var INDICATOR_NAME$1 = "CheckboxIndicator";
+var CheckboxIndicator = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeCheckbox, forceMount, ...indicatorProps } = props;
+    const context = useCheckboxContext(INDICATOR_NAME$1, __scopeCheckbox);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Presence,
+      {
+        present: forceMount || isIndeterminate(context.checked) || context.checked === true,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Primitive.span,
+          {
+            "data-state": getState$2(context.checked),
+            "data-disabled": context.disabled ? "" : void 0,
+            ...indicatorProps,
+            ref: forwardedRef,
+            style: { pointerEvents: "none", ...props.style }
+          }
+        )
+      }
+    );
+  }
+);
+CheckboxIndicator.displayName = INDICATOR_NAME$1;
+var BUBBLE_INPUT_NAME$1 = "CheckboxBubbleInput";
+var CheckboxBubbleInput = reactExports.forwardRef(
+  ({ __scopeCheckbox, ...props }, forwardedRef) => {
+    const {
+      control,
+      hasConsumerStoppedPropagationRef,
+      checked,
+      defaultChecked,
+      required: required2,
+      disabled,
+      name,
+      value,
+      form,
+      bubbleInput,
+      setBubbleInput
+    } = useCheckboxContext(BUBBLE_INPUT_NAME$1, __scopeCheckbox);
+    const composedRefs = useComposedRefs(forwardedRef, setBubbleInput);
+    const prevChecked = usePrevious$1(checked);
+    const controlSize = useSize(control);
+    reactExports.useEffect(() => {
+      const input = bubbleInput;
+      if (!input) return;
+      const inputProto = window.HTMLInputElement.prototype;
+      const descriptor = Object.getOwnPropertyDescriptor(
+        inputProto,
+        "checked"
+      );
+      const setChecked = descriptor.set;
+      const bubbles = !hasConsumerStoppedPropagationRef.current;
+      if (prevChecked !== checked && setChecked) {
+        const event2 = new Event("click", { bubbles });
+        input.indeterminate = isIndeterminate(checked);
+        setChecked.call(input, isIndeterminate(checked) ? false : checked);
+        input.dispatchEvent(event2);
+      }
+    }, [bubbleInput, prevChecked, checked, hasConsumerStoppedPropagationRef]);
+    const defaultCheckedRef = reactExports.useRef(isIndeterminate(checked) ? false : checked);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.input,
+      {
+        type: "checkbox",
+        "aria-hidden": true,
+        defaultChecked: defaultChecked ?? defaultCheckedRef.current,
+        required: required2,
+        disabled,
+        name,
+        value,
+        form,
+        ...props,
+        tabIndex: -1,
+        ref: composedRefs,
+        style: {
+          ...props.style,
+          ...controlSize,
+          position: "absolute",
+          pointerEvents: "none",
+          opacity: 0,
+          margin: 0,
+          // We transform because the input is absolutely positioned but we have
+          // rendered it **after** the button. This pulls it back to sit on top
+          // of the button.
+          transform: "translateX(-100%)"
+        }
+      }
+    );
+  }
+);
+CheckboxBubbleInput.displayName = BUBBLE_INPUT_NAME$1;
+function isFunction(value) {
+  return typeof value === "function";
+}
+function isIndeterminate(checked) {
+  return checked === "indeterminate";
+}
+function getState$2(checked) {
+  return isIndeterminate(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
+}
+function Checkbox({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Checkbox$1,
+    {
+      "data-slot": "checkbox",
+      className: cn(
+        "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[5px] border shadow-lg transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      ),
+      ...props,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(CheckboxIndicator, { "data-slot": "checkbox-indicator", className: "flex items-center justify-center text-current transition-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "size-3.5" }) })
+    }
+  );
+}
 var SLOTTABLE_IDENTIFIER$1 = Symbol("radix.slottable");
 // @__NO_SIDE_EFFECTS__
 function createSlottable(ownerName) {
@@ -25182,12 +25442,12 @@ var Tooltip$1 = (props) => {
   ) });
 };
 Tooltip$1.displayName = TOOLTIP_NAME;
-var TRIGGER_NAME$3 = "TooltipTrigger";
+var TRIGGER_NAME$2 = "TooltipTrigger";
 var TooltipTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeTooltip, ...triggerProps } = props;
-    const context = useTooltipContext(TRIGGER_NAME$3, __scopeTooltip);
-    const providerContext = useTooltipProviderContext(TRIGGER_NAME$3, __scopeTooltip);
+    const context = useTooltipContext(TRIGGER_NAME$2, __scopeTooltip);
+    const providerContext = useTooltipProviderContext(TRIGGER_NAME$2, __scopeTooltip);
     const popperScope = usePopperScope(__scopeTooltip);
     const ref = reactExports.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, ref, context.onTriggerChange);
@@ -25231,7 +25491,7 @@ var TooltipTrigger$1 = reactExports.forwardRef(
     ) });
   }
 );
-TooltipTrigger$1.displayName = TRIGGER_NAME$3;
+TooltipTrigger$1.displayName = TRIGGER_NAME$2;
 var PORTAL_NAME$1 = "TooltipPortal";
 var [PortalProvider$1, usePortalContext$1] = createTooltipContext(PORTAL_NAME$1, {
   forceMount: void 0
@@ -25546,313 +25806,6 @@ function Tooltips({ children }) {
     /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipContent, { children })
   ] });
 }
-function WindowName({ windowName, setWindowName }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "window-name", className: "flex flex-col gap-2", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 items-center", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium", children: "Window Name" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltips, { children: "If you're using an emulator, set this to your emulator's window name (case-sensitive)." })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Input,
-      {
-        id: "window-name",
-        className: "w-52",
-        value: windowName,
-        onChange: (e) => setWindowName(e.target.value)
-      }
-    )
-  ] });
-}
-function SleepMultiplier({
-  sleepMultiplier,
-  setSleepMultiplier
-}) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "sleep-multiplier", className: "flex flex-col gap-2", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium", children: "Sleep Time Multiplier" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Input,
-      {
-        id: "sleep-multiplier",
-        className: "w-24",
-        step: 0.1,
-        type: "number",
-        value: sleepMultiplier,
-        onChange: (e) => setSleepMultiplier(e.target.valueAsNumber)
-      }
-    )
-  ] });
-}
-var CHECKBOX_NAME = "Checkbox";
-var [createCheckboxContext, createCheckboxScope] = createContextScope(CHECKBOX_NAME);
-var [CheckboxProviderImpl, useCheckboxContext] = createCheckboxContext(CHECKBOX_NAME);
-function CheckboxProvider(props) {
-  const {
-    __scopeCheckbox,
-    checked: checkedProp,
-    children,
-    defaultChecked,
-    disabled,
-    form,
-    name,
-    onCheckedChange,
-    required: required2,
-    value = "on",
-    // @ts-expect-error
-    internal_do_not_use_render
-  } = props;
-  const [checked, setChecked] = useControllableState({
-    prop: checkedProp,
-    defaultProp: defaultChecked ?? false,
-    onChange: onCheckedChange,
-    caller: CHECKBOX_NAME
-  });
-  const [control, setControl] = reactExports.useState(null);
-  const [bubbleInput, setBubbleInput] = reactExports.useState(null);
-  const hasConsumerStoppedPropagationRef = reactExports.useRef(false);
-  const isFormControl = control ? !!form || !!control.closest("form") : (
-    // We set this to true by default so that events bubble to forms without JS (SSR)
-    true
-  );
-  const context = {
-    checked,
-    disabled,
-    setChecked,
-    control,
-    setControl,
-    name,
-    form,
-    value,
-    hasConsumerStoppedPropagationRef,
-    required: required2,
-    defaultChecked: isIndeterminate(defaultChecked) ? false : defaultChecked,
-    isFormControl,
-    bubbleInput,
-    setBubbleInput
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    CheckboxProviderImpl,
-    {
-      scope: __scopeCheckbox,
-      ...context,
-      children: isFunction(internal_do_not_use_render) ? internal_do_not_use_render(context) : children
-    }
-  );
-}
-var TRIGGER_NAME$2 = "CheckboxTrigger";
-var CheckboxTrigger = reactExports.forwardRef(
-  ({ __scopeCheckbox, onKeyDown, onClick, ...checkboxProps }, forwardedRef) => {
-    const {
-      control,
-      value,
-      disabled,
-      checked,
-      required: required2,
-      setControl,
-      setChecked,
-      hasConsumerStoppedPropagationRef,
-      isFormControl,
-      bubbleInput
-    } = useCheckboxContext(TRIGGER_NAME$2, __scopeCheckbox);
-    const composedRefs = useComposedRefs(forwardedRef, setControl);
-    const initialCheckedStateRef = reactExports.useRef(checked);
-    reactExports.useEffect(() => {
-      const form = control?.form;
-      if (form) {
-        const reset = () => setChecked(initialCheckedStateRef.current);
-        form.addEventListener("reset", reset);
-        return () => form.removeEventListener("reset", reset);
-      }
-    }, [control, setChecked]);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Primitive.button,
-      {
-        type: "button",
-        role: "checkbox",
-        "aria-checked": isIndeterminate(checked) ? "mixed" : checked,
-        "aria-required": required2,
-        "data-state": getState$2(checked),
-        "data-disabled": disabled ? "" : void 0,
-        disabled,
-        value,
-        ...checkboxProps,
-        ref: composedRefs,
-        onKeyDown: composeEventHandlers(onKeyDown, (event2) => {
-          if (event2.key === "Enter") event2.preventDefault();
-        }),
-        onClick: composeEventHandlers(onClick, (event2) => {
-          setChecked((prevChecked) => isIndeterminate(prevChecked) ? true : !prevChecked);
-          if (bubbleInput && isFormControl) {
-            hasConsumerStoppedPropagationRef.current = event2.isPropagationStopped();
-            if (!hasConsumerStoppedPropagationRef.current) event2.stopPropagation();
-          }
-        })
-      }
-    );
-  }
-);
-CheckboxTrigger.displayName = TRIGGER_NAME$2;
-var Checkbox$1 = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const {
-      __scopeCheckbox,
-      name,
-      checked,
-      defaultChecked,
-      required: required2,
-      disabled,
-      value,
-      onCheckedChange,
-      form,
-      ...checkboxProps
-    } = props;
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      CheckboxProvider,
-      {
-        __scopeCheckbox,
-        checked,
-        defaultChecked,
-        disabled,
-        required: required2,
-        onCheckedChange,
-        name,
-        form,
-        value,
-        internal_do_not_use_render: ({ isFormControl }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            CheckboxTrigger,
-            {
-              ...checkboxProps,
-              ref: forwardedRef,
-              __scopeCheckbox
-            }
-          ),
-          isFormControl && /* @__PURE__ */ jsxRuntimeExports.jsx(
-            CheckboxBubbleInput,
-            {
-              __scopeCheckbox
-            }
-          )
-        ] })
-      }
-    );
-  }
-);
-Checkbox$1.displayName = CHECKBOX_NAME;
-var INDICATOR_NAME$1 = "CheckboxIndicator";
-var CheckboxIndicator = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const { __scopeCheckbox, forceMount, ...indicatorProps } = props;
-    const context = useCheckboxContext(INDICATOR_NAME$1, __scopeCheckbox);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Presence,
-      {
-        present: forceMount || isIndeterminate(context.checked) || context.checked === true,
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Primitive.span,
-          {
-            "data-state": getState$2(context.checked),
-            "data-disabled": context.disabled ? "" : void 0,
-            ...indicatorProps,
-            ref: forwardedRef,
-            style: { pointerEvents: "none", ...props.style }
-          }
-        )
-      }
-    );
-  }
-);
-CheckboxIndicator.displayName = INDICATOR_NAME$1;
-var BUBBLE_INPUT_NAME$1 = "CheckboxBubbleInput";
-var CheckboxBubbleInput = reactExports.forwardRef(
-  ({ __scopeCheckbox, ...props }, forwardedRef) => {
-    const {
-      control,
-      hasConsumerStoppedPropagationRef,
-      checked,
-      defaultChecked,
-      required: required2,
-      disabled,
-      name,
-      value,
-      form,
-      bubbleInput,
-      setBubbleInput
-    } = useCheckboxContext(BUBBLE_INPUT_NAME$1, __scopeCheckbox);
-    const composedRefs = useComposedRefs(forwardedRef, setBubbleInput);
-    const prevChecked = usePrevious$1(checked);
-    const controlSize = useSize(control);
-    reactExports.useEffect(() => {
-      const input = bubbleInput;
-      if (!input) return;
-      const inputProto = window.HTMLInputElement.prototype;
-      const descriptor = Object.getOwnPropertyDescriptor(
-        inputProto,
-        "checked"
-      );
-      const setChecked = descriptor.set;
-      const bubbles = !hasConsumerStoppedPropagationRef.current;
-      if (prevChecked !== checked && setChecked) {
-        const event2 = new Event("click", { bubbles });
-        input.indeterminate = isIndeterminate(checked);
-        setChecked.call(input, isIndeterminate(checked) ? false : checked);
-        input.dispatchEvent(event2);
-      }
-    }, [bubbleInput, prevChecked, checked, hasConsumerStoppedPropagationRef]);
-    const defaultCheckedRef = reactExports.useRef(isIndeterminate(checked) ? false : checked);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Primitive.input,
-      {
-        type: "checkbox",
-        "aria-hidden": true,
-        defaultChecked: defaultChecked ?? defaultCheckedRef.current,
-        required: required2,
-        disabled,
-        name,
-        value,
-        form,
-        ...props,
-        tabIndex: -1,
-        ref: composedRefs,
-        style: {
-          ...props.style,
-          ...controlSize,
-          position: "absolute",
-          pointerEvents: "none",
-          opacity: 0,
-          margin: 0,
-          // We transform because the input is absolutely positioned but we have
-          // rendered it **after** the button. This pulls it back to sit on top
-          // of the button.
-          transform: "translateX(-100%)"
-        }
-      }
-    );
-  }
-);
-CheckboxBubbleInput.displayName = BUBBLE_INPUT_NAME$1;
-function isFunction(value) {
-  return typeof value === "function";
-}
-function isIndeterminate(checked) {
-  return checked === "indeterminate";
-}
-function getState$2(checked) {
-  return isIndeterminate(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
-}
-function Checkbox({ className, ...props }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Checkbox$1,
-    {
-      "data-slot": "checkbox",
-      className: cn(
-        "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[5px] border shadow-lg transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      ),
-      ...props,
-      children: /* @__PURE__ */ jsxRuntimeExports.jsx(CheckboxIndicator, { "data-slot": "checkbox-indicator", className: "flex items-center justify-center text-current transition-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "size-3.5" }) })
-    }
-  );
-}
 function SetUpSection({ config: config2, updateConfig }) {
   const {
     window_name: window_name2,
@@ -25865,22 +25818,37 @@ function SetUpSection({ config: config2, updateConfig }) {
       /* @__PURE__ */ jsxRuntimeExports.jsx(Cog, { className: "text-primary" }),
       "Set-Up"
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-8", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        WindowName,
-        {
-          windowName: window_name2,
-          setWindowName: (val) => updateConfig("window_name", val)
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        SleepMultiplier,
-        {
-          sleepMultiplier: sleep_time_multiplier2,
-          setSleepMultiplier: (val) => updateConfig("sleep_time_multiplier", val)
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-8", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "window-name", className: "flex flex-col gap-2 cursor-pointer group", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 items-center", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium group-hover:text-primary transition-colors", children: "Window Name" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltips, { children: "If you're using an emulator, set this to your emulator's window name (case-sensitive)." })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "window-name",
+            className: "w-48",
+            value: window_name2,
+            onChange: (e) => updateConfig("window_name", e.target.value)
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "sleep-multiplier", className: "flex flex-col gap-2 cursor-pointer group", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium group-hover:text-primary transition-colors", children: "Sleep Time Multiplier" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "sleep-multiplier",
+            className: "w-24",
+            step: 0.1,
+            type: "number",
+            value: sleep_time_multiplier2,
+            onChange: (e) => updateConfig("sleep_time_multiplier", e.target.valueAsNumber)
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex gap-2 items-center cursor-pointer", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Checkbox,
           {
@@ -25888,14 +25856,15 @@ function SetUpSection({ config: config2, updateConfig }) {
             onCheckedChange: () => updateConfig("use_adb", !use_adb2)
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "use_adb" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium", children: "Use ADB" })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "device_id" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-col gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium", children: "Device ID" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Input,
           {
             type: "text",
+            className: "w-48",
             value: device_id2,
             onChange: (e) => updateConfig("device_id", e.target.value)
           }
@@ -29805,7 +29774,7 @@ const PRIORITY_WEIGHT = {
   NONE: "Doesn't focus on main stats at all, just picks based on support count only."
 };
 const POSITION = ["front", "pace", "late", "end"];
-const RANK$1 = ["s", "a", "b", "c", "d", "e", "f", "g"];
+const RANK = ["s", "a", "b", "c", "d", "e", "f", "g"];
 function RaceScheduleSection$1({ config: config2, updateConfig }) {
   const {
     use_race_schedule: use_race_schedule2,
@@ -29852,17 +29821,17 @@ function RaceScheduleSection$1({ config: config2, updateConfig }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx("label", { htmlFor: "aptitude_surface", className: "flex gap-2 justify-self-start items-center cursor-pointer", children: "Surface" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: surface, onValueChange: (val) => updateConfig("minimum_aptitudes", { ...config2.minimum_aptitudes, surface: val }), children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { id: "aptitude_surface", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "surface" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK$1.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("label", { htmlFor: "aptitude_distance", className: "flex gap-2 justify-self-start items-center cursor-pointer", children: "Distance" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: distance, onValueChange: (val) => updateConfig("minimum_aptitudes", { ...config2.minimum_aptitudes, distance: val }), children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { id: "aptitude_distance", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "distance" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK$1.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("label", { htmlFor: "aptitude_style", className: "flex gap-2 justify-self-start items-center cursor-pointer", children: "Style" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: style, onValueChange: (val) => updateConfig("minimum_aptitudes", { ...config2.minimum_aptitudes, style: val }), children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { id: "aptitude_style", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "style" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK$1.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
@@ -31344,7 +31313,7 @@ function RaceFilters({ filterState }) {
     setDistanceFilter,
     setSparksFilter
   } = filterState;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-80 border-r bg-muted/20 p-6 overflow-y-auto", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-60 border-r pr-6 overflow-y-auto", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-6 flex justify-between", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Funnel, { className: "w-5 h-5 text-muted-foreground" }),
@@ -31614,18 +31583,14 @@ function RaceScheduleDialog({
     "Senior Year": senior
   } = filteredRaceData;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 py-4 border-b bg-gradient-to-r from-background to-muted/30 backdrop-blur-sm flex flex-row justify-between items-center", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Trophy, { className: "w-6 h-6 text-primary" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { children: "Race Schedule" }),
-        raceSchedule.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { variant: "secondary", children: [
-          raceSchedule.length,
-          " race",
-          raceSchedule.length > 1 ? "s" : "",
-          " ",
-          "selected"
-        ] })
-      ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute right-3 top-5 gap-2 flex flex-row justify-between items-center", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-3", children: raceSchedule.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { variant: "secondary", children: [
+        raceSchedule.length,
+        " race",
+        raceSchedule.length > 1 ? "s" : "",
+        " ",
+        "selected"
+      ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         Badge,
         {
@@ -31636,7 +31601,6 @@ function RaceScheduleDialog({
         }
       )
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Race schedule selection dialog" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(RaceFilters, { filterState }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 px-8 flex", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Tabs, { className: "w-full", defaultValue: "junior-year", children: [
@@ -31811,10 +31775,10 @@ function RaceScheduleSection({ config: config2, updateConfig }) {
     race_schedule: race_schedule2,
     use_race_schedule: use_race_schedule2
   } = config2;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full bg-card p-6 rounded-xl shadow-lg border border-border/80", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full bg-card p-6 rounded-xl shadow-lg border border-border/80 relative", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-row", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-3xl font-semibold mb-6 flex items-center gap-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronsRight, { className: "text-primary" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Trophy, { className: "text-primary" }),
         "Race Schedule"
       ] }),
       !use_race_schedule2 && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-1 h-fit items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center h-fit gap-2 px-4 rounded-full text-sm font-medium animate-in fade-in zoom-in duration-300 border bg-secondary/10 border-secondary/20 text-secondary -mt-1", children: [
@@ -32029,163 +31993,6 @@ function SkillSection({ config: config2, updateConfig }) {
         })
       }
     )
-  ] });
-}
-function IsPositionSelectionEnabled({ positionSelectionEnabled, setPositionSelectionEnabled }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "position-selection-enabled", className: "flex gap-2 items-center", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Checkbox, { id: "position-selection-enabled", checked: positionSelectionEnabled, onCheckedChange: () => setPositionSelectionEnabled(!positionSelectionEnabled) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium shrink-0", children: "Position Selection Enabled" })
-  ] });
-}
-const RANK = ["s", "a", "b", "c", "d", "e", "f", "g"];
-function RaceStyleSection({ config: config2, updateConfig }) {
-  const {
-    position_selection_enabled: position_selection_enabled2,
-    preferred_position: preferred_position2,
-    enable_positions_by_race: enable_positions_by_race2,
-    positions_by_race: positions_by_race2,
-    minimum_aptitudes: { surface, distance, style }
-  } = config2;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full bg-card p-6 rounded-xl shadow-lg border border-border/80", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-3xl font-semibold mb-6 flex items-center gap-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Trophy, { className: "text-primary" }),
-      "Race Style"
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-8", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          IsPositionSelectionEnabled,
-          {
-            positionSelectionEnabled: position_selection_enabled2,
-            setPositionSelectionEnabled: (val) => updateConfig("position_selection_enabled", val)
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium shrink-0", children: "Preferred Position" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            Select,
-            {
-              disabled: !(position_selection_enabled2 && !enable_positions_by_race2),
-              value: preferred_position2,
-              onValueChange: (val) => updateConfig("preferred_position", val),
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "w-24", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Position" }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: POSITION.map((pos) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: pos, children: pos.toUpperCase() }, pos)) })
-              ]
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "label",
-          {
-            htmlFor: "position-by-race",
-            className: "flex gap-2 items-center cursor-pointer",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Checkbox,
-                {
-                  disabled: !position_selection_enabled2,
-                  id: "position-by-race",
-                  checked: enable_positions_by_race2,
-                  onCheckedChange: () => updateConfig(
-                    "enable_positions_by_race",
-                    !enable_positions_by_race2
-                  )
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium shrink-0", children: "Position By Race?" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-lg font-medium", children: "Position By Race:" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2", children: Object.entries(positions_by_race2).map(([key, val]) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "label",
-            {
-              htmlFor: key,
-              className: "flex gap-2 items-center w-44 justify-between cursor-pointer",
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "capitalize", children: key }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  Select,
-                  {
-                    disabled: !(enable_positions_by_race2 && position_selection_enabled2),
-                    value: val,
-                    onValueChange: (newVal) => updateConfig("positions_by_race", {
-                      ...positions_by_race2,
-                      [key]: newVal
-                    }),
-                    children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "w-24", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Position" }) }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: POSITION.map((pos) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: pos, children: pos.toUpperCase() }, pos)) })
-                    ]
-                  }
-                )
-              ]
-            },
-            key
-          )) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
-        "Minimum Aptituted",
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-center", children: "surface" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            Select,
-            {
-              value: surface,
-              onValueChange: (val) => updateConfig("minimum_aptitudes", {
-                ...config2.minimum_aptitudes,
-                surface: val
-              }),
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "surface" }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
-              ]
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "border-l" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-center", children: "distance" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            Select,
-            {
-              value: distance,
-              onValueChange: (val) => updateConfig("minimum_aptitudes", {
-                ...config2.minimum_aptitudes,
-                distance: val
-              }),
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "distance" }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
-              ]
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "border-l" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-center", children: "style" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            Select,
-            {
-              value: style,
-              onValueChange: (val) => updateConfig("minimum_aptitudes", {
-                ...config2.minimum_aptitudes,
-                style: val
-              }),
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "style" }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: RANK.map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: r2, children: r2.toUpperCase() }, r2)) })
-              ]
-            }
-          )
-        ] })
-      ] })
-    ] })
   ] });
 }
 function useCombinedRefs() {
@@ -36315,22 +36122,7 @@ function TrainingSection$2({ config: config2, updateConfig }) {
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-fit", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "priority-weight", className: "flex flex-col gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold", children: "Priority Weight Level:" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            RadioGroup,
-            {
-              value: priority_weight2,
-              onValueChange: (val) => updateConfig("priority_weight", val),
-              children: Object.entries(PRIORITY_WEIGHT).map(([weight, description]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(RadioGroupItem, { value: weight, id: weight }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("label", { htmlFor: weight, className: "cursor-pointer capitalize", children: weight }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltips, { children: description })
-              ] }, weight))
-            }
-          )
-        ] }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-row gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-row gap-2 mb-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2 w-fit", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold", children: "Priority Stat" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -36368,9 +36160,49 @@ function TrainingSection$2({ config: config2, updateConfig }) {
               i
             ))
           ] })
-        ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-fit", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "priority-weight", className: "flex flex-col gap-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold", children: "Priority Weight Level:" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            RadioGroup,
+            {
+              value: priority_weight2,
+              onValueChange: (val) => updateConfig("priority_weight", val),
+              children: Object.entries(PRIORITY_WEIGHT).map(([weight, description]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(RadioGroupItem, { value: weight, id: weight }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("label", { htmlFor: weight, className: "cursor-pointer capitalize", children: weight }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltips, { children: description })
+              ] }, weight))
+            }
+          )
+        ] }) })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "hint-hunting", className: "flex gap-2 items-center cursor-pointer", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Checkbox,
+            {
+              id: "hint-hunting",
+              checked: hint_hunting_enabled2,
+              onCheckedChange: () => updateConfig("hint_hunting_enabled", !hint_hunting_enabled2)
+            }
+          ),
+          "Enable Hint Hunting"
+        ] }) }),
+        hint_hunting_enabled2 && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2 mb-2", children: Object.entries(hint_hunting_weights2).map(([stat, val]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex items-center gap-4 cursor-pointer", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block w-16", children: stat.toUpperCase() }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Input,
+            {
+              className: "w-24",
+              type: "number",
+              value: val,
+              min: 0,
+              step: 0.1,
+              onChange: (e) => updateConfig("hint_hunting_weights", { ...hint_hunting_weights2, [stat]: isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber })
+            }
+          )
+        ] }, stat)) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 w-fit items-center cursor-pointer", children: [
           "Wit Training Treshold",
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -36432,32 +36264,7 @@ function TrainingSection$2({ config: config2, updateConfig }) {
               onChange: (e) => updateConfig("scenario_gimmick_weight", e.target.valueAsNumber)
             }
           )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "hint-hunting", className: "flex gap-2 items-center cursor-pointer", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Checkbox,
-            {
-              id: "hint-hunting",
-              checked: hint_hunting_enabled2,
-              onCheckedChange: () => updateConfig("hint_hunting_enabled", !hint_hunting_enabled2)
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold", children: "Enable Hint Hunting" })
-        ] }) }),
-        hint_hunting_enabled2 && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2", children: Object.entries(hint_hunting_weights2).map(([stat, val]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex items-center gap-4 cursor-pointer", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block w-16", children: stat.toUpperCase() }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Input,
-            {
-              className: "w-24",
-              type: "number",
-              value: val,
-              min: 0,
-              step: 0.1,
-              onChange: (e) => updateConfig("hint_hunting_weights", { ...hint_hunting_weights2, [stat]: isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber })
-            }
-          )
-        ] }, stat)) })
+        ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2 w-fit", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold", children: "Stat Caps" }),
@@ -37733,8 +37540,6 @@ function App() {
           /* @__PURE__ */ jsxRuntimeExports.jsx(TrainingSection, { ...props }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(TrainingSection$2, { ...props })
         ] });
-      case "race-style":
-        return /* @__PURE__ */ jsxRuntimeExports.jsx(RaceStyleSection, { ...props });
       case "skills":
         return /* @__PURE__ */ jsxRuntimeExports.jsx(SkillSection, { ...props });
       case "schedule":
