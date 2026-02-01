@@ -25,51 +25,49 @@ export default function EventList({
 
   const eventSelected = selected
     ? groupedChoices?.filter((val) =>
-        val.character_name.toLowerCase().includes(selected.toLowerCase())
-      )
+      val.character_name.toLowerCase().includes(selected.toLowerCase())
+    )
     : [];
 
   return (
-    <div>
-                  <div className="flex items-center justify-between">
+    <>
+      <div className="absolute right-3 top-5 gap-2 flex flex-row justify-between items-center">
+        {selected && (
+          <Badge
+            variant="secondary"
+            className="flex items-center gap-1 text-sm"
+          >
+            Filter: {selected}
+            <button
+              onClick={() => setSelected("")}
+              className="ml-1 hover:text-destructive"
+            >
+              <X className="w-3 h-3" />
+            </button>
+          </Badge>
+        )}
+      </div>
 
 
-              {selected && (
-                <Badge
-                  variant="secondary"
-                  className="flex items-center gap-1 text-sm"
-                >
-                  Filter: {selected}
-                  <button
-                    onClick={() => setSelected("")}
-                    className="ml-1 hover:text-destructive"
-                  >
-                    <X className="w-3 h-3" />
-                  </button>
-                </Badge>
-              )}
-            </div>
+      <div className="flex-1 flex overflow-hidden">
+        {/* SIDEBAR */}
+        <SidebarEventList
+          selected={selected}
+          setSelected={setSelected}
+          data={data}
+        />
 
+        {/* MAIN CONTENT */}
+        <MainEventList
+          deleteEventList={deleteEventList}
+          addEventList={addEventList}
+          eventChoicesConfig={eventChoicesConfig}
+          eventSelected={eventSelected}
+          selected={selected}
+          setSelected={setSelected}
+        />
+      </div>
 
-          <div className="flex-1 flex overflow-hidden">
-            {/* SIDEBAR */}
-            <SidebarEventList
-              selected={selected}
-              setSelected={setSelected}
-              data={data}
-            />
-
-            {/* MAIN CONTENT */}
-            <MainEventList
-              deleteEventList={deleteEventList}
-              addEventList={addEventList}
-              eventChoicesConfig={eventChoicesConfig}
-              eventSelected={eventSelected}
-              selected={selected}
-              setSelected={setSelected}
-            />
-          </div>
-
-    </div>
+    </>
   );
 }

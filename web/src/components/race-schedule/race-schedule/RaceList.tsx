@@ -63,7 +63,7 @@ export default function RaceScheduleDialog({
       <div className="flex-1 flex overflow-hidden">
         <RaceFilters filterState={filterState} />
 
-        <div className="flex-1 px-8 flex">
+        <div className="flex-1 pl-4 flex">
           <Tabs className="w-full" defaultValue="junior-year">
             <TabsList className="gap-4 mb-6 bg-transparent">
               <TabsTrigger
@@ -97,7 +97,7 @@ export default function RaceScheduleDialog({
 
             <TabsContent
               value="junior-year"
-              className="grid grid-cols-4 gap-4 overflow-y-auto px-4 pb-8"
+              className="grid grid-cols-4 gap-4 overflow-y-auto"
             >
               <RaceCalendar
                 races={junior}
@@ -110,7 +110,7 @@ export default function RaceScheduleDialog({
 
             <TabsContent
               value="classic-year"
-              className="grid grid-cols-4 gap-4 overflow-y-auto px-4 pb-8"
+              className="grid grid-cols-4 gap-4 overflow-y-auto"
             >
               <RaceCalendar
                 races={classic}
@@ -123,7 +123,7 @@ export default function RaceScheduleDialog({
 
             <TabsContent
               value="senior-year"
-              className="grid grid-cols-4 gap-4 overflow-y-auto px-4 pb-8"
+              className="grid grid-cols-4 gap-4 overflow-y-auto"
             >
               <RaceCalendar
                 races={senior}

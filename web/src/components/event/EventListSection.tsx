@@ -1,4 +1,4 @@
-import { TicketsIcon } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 import EventList from "./EventList";
 import type { EventChoicesType, EventData } from "@/types/event.type";
@@ -106,9 +106,9 @@ export default function EventSection({ config, updateConfig }: Props) {
   }, [data]);
 
   return (
-    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/80">
+    <div className="w-full bg-card p-6 rounded-xl shadow-lg border border-border/80 relative">
       <h2 className="text-3xl font-semibold mb-6 flex items-center gap-3">
-        <TicketsIcon className="text-primary" /> Event Database
+        <Calendar className="text-primary" /> Event Database
       </h2>
         <EventList
           eventChoicesConfig={event_choices}

@@ -51,7 +51,7 @@ const filtered = useMemo(() => {
   };
 
   return (
-    <div className="flex-1 overflow-y-auto p-6 bg-background">
+    <div className="flex-1 overflow-y-auto pl-6">
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold">
