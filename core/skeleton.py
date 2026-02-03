@@ -17,7 +17,7 @@ from core.skill import buy_skill, init_skill_py
 pyautogui.useImageNotFoundException(False)
 
 import core.bot as bot
-from utils.log import info, warning, error, debug, log_encoded, args, record_turn, VERSION
+from utils.log import info, warning, error, debug, log_encoded, args, record_turn, VERSION, notify
 from utils.device_action_wrapper import BotStopException
 import utils.device_action_wrapper as device_action
 
@@ -103,6 +103,7 @@ def career_lobby(dry_run_turn=False):
 
       if non_match_count > 20:
         info("Career lobby stuck, quitting.")
+        notify("error")
         quit()
       if constants.SCENARIO_NAME == "":
         info("Trying to find what scenario we're on.")
@@ -141,6 +142,7 @@ def career_lobby(dry_run_turn=False):
         clock_icon = device_action.match_template("assets/icons/clock_icon.png", screenshot=screenshot, threshold=0.9)
         if clock_icon:
           info("Lost race, wait for input.")
+          notify("info")
           non_match_count += 1
         elif click_match(matches.get("cancel")):
           info("Pressed cancel.")

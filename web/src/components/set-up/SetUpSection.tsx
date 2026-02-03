@@ -15,6 +15,8 @@ export default function SetUpSection({ config, updateConfig }: Props) {
     sleep_time_multiplier,
     use_adb,
     device_id,
+    notifications_enabled,
+    error_notification,
   } = config;
 
   return (
@@ -23,33 +25,26 @@ export default function SetUpSection({ config, updateConfig }: Props) {
         <Cog className="text-primary" />
         Set-Up
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <label htmlFor="sleep-multiplier" className="flex flex-col gap-2 cursor-pointer group">
-          <span className="text-lg font-medium group-hover:text-primary transition-colors">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
+        <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
+          <span className="font-base">
             Sleep Time Multiplier
           </span>
-          <Input
-            id="sleep-multiplier"
-            className="w-24"
-            step={0.1}
-            type="number"
+          <Input className="w-24" step={0.1} type="number"
             value={sleep_time_multiplier}
-            onChange={(e) =>
-              updateConfig("sleep_time_multiplier", e.target.valueAsNumber)
-            }
-          />
+            onChange={(e) => updateConfig("sleep_time_multiplier", e.target.valueAsNumber)} />
         </label>
         <label className="flex gap-2 items-center cursor-pointer">
           <Checkbox
             checked={use_adb}
             onCheckedChange={() => updateConfig("use_adb", !use_adb)}
           />
-          <span className="text-lg font-medium">Use ADB</span>
+          <span className="font-base">Use ADB</span>
         </label>
         {!use_adb && (
-          <label htmlFor="window-name" className="flex flex-col gap-2 cursor-pointer group">
+          <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
             <div className="flex gap-2 items-center">
-              <span className="text-lg font-medium group-hover:text-primary transition-colors">
+              <span className="font-base">
                 Window Name
               </span>
               <Tooltips>
@@ -66,13 +61,34 @@ export default function SetUpSection({ config, updateConfig }: Props) {
           </label>
         )}
         {use_adb && (
-          <label className="flex flex-col gap-2">
-            <span className="text-lg font-medium">Device ID</span>
+          <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
+            <span className="font-base">Device ID</span>
             <Input
               type="text"
               className="w-48"
               value={device_id}
               onChange={(e) => updateConfig("device_id", e.target.value)}
+            />
+          </label>
+        )}
+        <label className="flex gap-2 items-center cursor-pointer">
+          <Checkbox
+            checked={notifications_enabled}
+            onCheckedChange={() => updateConfig("notifications_enabled", !notifications_enabled)}
+          />
+          <span className="font-base">Enable notification sounds</span>
+        </label>
+        {notifications_enabled && (
+          <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
+            <div className="flex gap-2 items-center">
+              <span className="font-base">
+                Error sound
+              </span>
+            </div>
+            <Input
+              className="w-48"
+              value={error_notification}
+              onChange={(e) => updateConfig("error_notification", e.target.value)}
             />
           </label>
         )}

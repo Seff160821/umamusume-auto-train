@@ -4,6 +4,7 @@ import rawConfig from "../../config.json";
 import { useConfigPreset } from "./hooks/useConfigPreset";
 import { useConfig } from "./hooks/useConfig";
 import { useImportConfig } from "./hooks/useImportConfig";
+import { useNotifications } from "./hooks/useNotifications";
 import { Pencil, CheckCircle2, AlertCircle, Sun, Moon } from "lucide-react";
 
 import type { Config } from "./types";
@@ -72,6 +73,8 @@ function App() {
   const { activeIndex, activeConfig, presets, setActiveIndex, savePreset, updatePreset } = useConfigPreset();
   const { config, setConfig, saveConfig, toast } = useConfig(activeConfig ?? defaultConfig);
   const { fileInputRef, openFileDialog, handleImport } = useImportConfig({ activeIndex, updatePreset, savePreset });
+
+  useNotifications(config);
 
   useEffect(() => {
     if (presets[activeIndex]) {

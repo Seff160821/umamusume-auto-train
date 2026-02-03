@@ -12118,6 +12118,10 @@ const minimum_aptitudes = { "surface": "b", "distance": "b", "style": "c" };
 const rest_before_summer_energy = 60;
 const use_adb = true;
 const device_id = "127.0.0.1:5555";
+const notifications_enabled = true;
+const info_notification = "sfx_01.mp3";
+const error_notification = "sfx_02.mp3";
+const success_notification = "sfx_03.mp3";
 const use_race_schedule = true;
 const cancel_consecutive_race = false;
 const position_selection_enabled = true;
@@ -12158,6 +12162,10 @@ const rawConfig = {
   rest_before_summer_energy,
   use_adb,
   device_id,
+  notifications_enabled,
+  info_notification,
+  error_notification,
+  success_notification,
   use_race_schedule,
   cancel_consecutive_race,
   position_selection_enabled,
@@ -15786,6 +15794,8 @@ const ConfigSchema = object({
   rest_before_summer_energy: number(),
   use_adb: boolean(),
   device_id: string(),
+  notifications_enabled: boolean(),
+  error_notification: string(),
   use_race_schedule: boolean(),
   cancel_consecutive_race: boolean(),
   position_selection_enabled: boolean(),
@@ -15857,6 +15867,27 @@ function useImportConfig({
     openFileDialog,
     handleImport
   };
+}
+function useNotifications(config2) {
+  reactExports.useEffect(() => {
+    const poll = async () => {
+      try {
+        const res = await fetch("/notifications-poll");
+        const data = await res.json();
+        if (data.notifications && data.notifications.length > 0) {
+          data.notifications.forEach((type) => {
+            if (type === "error" && config2.notifications_enabled && config2.error_notification) {
+              const audio = new Audio(`/notifications/${config2.error_notification}`);
+              audio.play().catch((e) => console.error("Failed to play notification sound:", e));
+            }
+          });
+        }
+      } catch (error) {
+      }
+    };
+    const interval = setInterval(poll, 3e3);
+    return () => clearInterval(interval);
+  }, [config2.notifications_enabled, config2.error_notification]);
 }
 /**
  * @license lucide-react v0.541.0 - ISC
@@ -25831,20 +25862,21 @@ function SetUpSection({ config: config2, updateConfig }) {
     window_name: window_name2,
     sleep_time_multiplier: sleep_time_multiplier2,
     use_adb: use_adb2,
-    device_id: device_id2
+    device_id: device_id2,
+    notifications_enabled: notifications_enabled2,
+    error_notification: error_notification2
   } = config2;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "section-card", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-3xl font-semibold mb-6 flex items-center gap-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Cog, { className: "text-primary" }),
       "Set-Up"
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-8", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "sleep-multiplier", className: "flex flex-col gap-2 cursor-pointer group", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium group-hover:text-primary transition-colors", children: "Sleep Time Multiplier" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Sleep Time Multiplier" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Input,
           {
-            id: "sleep-multiplier",
             className: "w-24",
             step: 0.1,
             type: "number",
@@ -25861,11 +25893,11 @@ function SetUpSection({ config: config2, updateConfig }) {
             onCheckedChange: () => updateConfig("use_adb", !use_adb2)
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium", children: "Use ADB" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Use ADB" })
       ] }),
-      !use_adb2 && /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { htmlFor: "window-name", className: "flex flex-col gap-2 cursor-pointer group", children: [
+      !use_adb2 && /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 items-center", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium group-hover:text-primary transition-colors", children: "Window Name" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Window Name" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltips, { children: "If you're using an emulator, set this to your emulator's window name (case-sensitive)." })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -25878,8 +25910,8 @@ function SetUpSection({ config: config2, updateConfig }) {
           }
         )
       ] }),
-      use_adb2 && /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-col gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-medium", children: "Device ID" }),
+      use_adb2 && /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Device ID" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Input,
           {
@@ -25887,6 +25919,27 @@ function SetUpSection({ config: config2, updateConfig }) {
             className: "w-48",
             value: device_id2,
             onChange: (e) => updateConfig("device_id", e.target.value)
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex gap-2 items-center cursor-pointer", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Checkbox,
+          {
+            checked: notifications_enabled2,
+            onCheckedChange: () => updateConfig("notifications_enabled", !notifications_enabled2)
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Enable notification sounds" })
+      ] }),
+      notifications_enabled2 && /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2 items-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Error sound" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            className: "w-48",
+            value: error_notification2,
+            onChange: (e) => updateConfig("error_notification", e.target.value)
           }
         )
       ] })
@@ -36464,7 +36517,7 @@ function SkeletonLayout({ children }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 gap-4", children });
 }
 function Column({ children }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "border-border box h-[512px] max-h-[750px] overflow-y-auto", children });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "box h-[512px] max-h-[750px] border-border overflow-y-auto", children });
 }
 SkeletonLayout.Column = Column;
 function useHandleValueChange(setValue) {
@@ -37510,6 +37563,7 @@ function App() {
   const { activeIndex, activeConfig, presets, setActiveIndex, savePreset, updatePreset } = useConfigPreset();
   const { config: config2, setConfig, saveConfig, toast } = useConfig(activeConfig ?? defaultConfig);
   const { fileInputRef, openFileDialog, handleImport } = useImportConfig({ activeIndex, updatePreset, savePreset });
+  useNotifications(config2);
   reactExports.useEffect(() => {
     if (presets[activeIndex]) {
       setConfig(presets[activeIndex].config ?? defaultConfig);
