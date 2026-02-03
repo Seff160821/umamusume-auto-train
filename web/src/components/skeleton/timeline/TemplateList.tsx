@@ -25,10 +25,12 @@ export default function TemplateList({ config, updateConfig }: Props) {
           <p className="text-slate-500">Please add them first</p>
         </div>
       ) : (
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-4">
+        <div className="flex flex-wrap gap-2">
+          <div className="w-full">
+            <p className="">Drag and drop stat sets below into timeline to schedule your training strategy.</p>
+          </div>
           {templates.map((set) => {
-            const [name, value] = set;
-            const stat = Object.entries(value ?? {});
+            const [name] = set;
 
             return (
               <div
@@ -38,10 +40,10 @@ export default function TemplateList({ config, updateConfig }: Props) {
                   e.dataTransfer.setData("templateName", name);
                 }}
                 style={{ ...colorFromString(name) }}
-                className="relative group border border-slate-200 rounded-xl p-2 py-4 w-full max-w-80 bg-white shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-grab active:cursor-grabbing"
+                className="relative group border border-slate-200 rounded-lg px-3 py-1.5 w-fit bg-white shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-grab active:cursor-grabbing"
               >
-                <div className="pr-10">
-                  <p className="font-semibold text-slate-800 dark:text-slate-200 truncate">
+                <div>
+                  <p className="font-semibold text-slate-800 dark:text-slate-200 whitespace-nowrap">
                     {name.replaceAll("_", " ")}
                   </p>
 
@@ -61,7 +63,7 @@ export default function TemplateList({ config, updateConfig }: Props) {
                 <Button
                   size="icon"
                   variant="destructive"
-                  className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  className="hidden absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                   onClick={() => modify(name, null)}
                 >
                   <Trash className="h-4 w-4" color="white" />

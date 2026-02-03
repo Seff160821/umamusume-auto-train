@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
-
 @custom-variant dark (&:is(.dark *));
+
+@utility border-l-solid {
+  border-left-style: solid;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
