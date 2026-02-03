@@ -15963,7 +15963,7 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$y = [
+const __iconNode$z = [
   [
     "path",
     {
@@ -15984,14 +15984,14 @@ const __iconNode$y = [
   ["circle", { cx: "20", cy: "21", r: ".5", key: "yhc1fs" }],
   ["circle", { cx: "20", cy: "8", r: ".5", key: "1e43v0" }]
 ];
-const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$y);
+const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$z);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$x = [
+const __iconNode$y = [
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["path", { d: "M3 10h18", key: "8toen8" }],
@@ -16001,44 +16001,56 @@ const __iconNode$x = [
   ["path", { d: "M7 14h.01", key: "1qa3f1" }],
   ["path", { d: "M17 18h.01", key: "1bdyru" }]
 ];
-const CalendarRange = createLucideIcon("calendar-range", __iconNode$x);
+const CalendarRange = createLucideIcon("calendar-range", __iconNode$y);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$w = [
+const __iconNode$x = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
   ["path", { d: "M3 10h18", key: "8toen8" }]
 ];
-const Calendar = createLucideIcon("calendar", __iconNode$w);
+const Calendar = createLucideIcon("calendar", __iconNode$x);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$v = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$v);
+const __iconNode$w = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$w);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$u = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$u);
+const __iconNode$v = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$v);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$t = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$t);
+const __iconNode$u = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$u);
+/**
+ * @license lucide-react v0.541.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$t = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
+  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+];
+const CircleAlert = createLucideIcon("circle-alert", __iconNode$t);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
@@ -16047,10 +16059,9 @@ const ChevronUp = createLucideIcon("chevron-up", __iconNode$t);
  */
 const __iconNode$s = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
-  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ];
-const CircleAlert = createLucideIcon("circle-alert", __iconNode$s);
+const CircleCheck = createLucideIcon("circle-check", __iconNode$s);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
@@ -16059,36 +16070,25 @@ const CircleAlert = createLucideIcon("circle-alert", __iconNode$s);
  */
 const __iconNode$r = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
-];
-const CircleCheck = createLucideIcon("circle-check", __iconNode$r);
-/**
- * @license lucide-react v0.541.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$q = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3", key: "1u773s" }],
   ["path", { d: "M12 17h.01", key: "p32p05" }]
 ];
-const CircleQuestionMark = createLucideIcon("circle-question-mark", __iconNode$q);
+const CircleQuestionMark = createLucideIcon("circle-question-mark", __iconNode$r);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$p = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
-const Circle = createLucideIcon("circle", __iconNode$p);
+const __iconNode$q = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
+const Circle = createLucideIcon("circle", __iconNode$q);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$o = [
+const __iconNode$p = [
   ["path", { d: "M11 10.27 7 3.34", key: "16pf9h" }],
   ["path", { d: "m11 13.73-4 6.93", key: "794ttg" }],
   ["path", { d: "M12 22v-2", key: "1osdcq" }],
@@ -16104,14 +16104,14 @@ const __iconNode$o = [
   ["circle", { cx: "12", cy: "12", r: "2", key: "1c9p78" }],
   ["circle", { cx: "12", cy: "12", r: "8", key: "46899m" }]
 ];
-const Cog = createLucideIcon("cog", __iconNode$o);
+const Cog = createLucideIcon("cog", __iconNode$p);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$n = [
+const __iconNode$o = [
   [
     "path",
     {
@@ -16130,7 +16130,23 @@ const __iconNode$n = [
   ],
   ["path", { d: "m9.6 14.4 4.8-4.8", key: "6umqxw" }]
 ];
-const Dumbbell = createLucideIcon("dumbbell", __iconNode$n);
+const Dumbbell = createLucideIcon("dumbbell", __iconNode$o);
+/**
+ * @license lucide-react v0.541.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$n = [
+  [
+    "path",
+    {
+      d: "M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528",
+      key: "1jaruq"
+    }
+  ]
+];
+const Flag = createLucideIcon("flag", __iconNode$n);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
@@ -16141,12 +16157,12 @@ const __iconNode$m = [
   [
     "path",
     {
-      d: "M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528",
-      key: "1jaruq"
+      d: "M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z",
+      key: "sc7q7i"
     }
   ]
 ];
-const Flag = createLucideIcon("flag", __iconNode$m);
+const Funnel = createLucideIcon("funnel", __iconNode$m);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
@@ -16154,15 +16170,14 @@ const Flag = createLucideIcon("flag", __iconNode$m);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$l = [
-  [
-    "path",
-    {
-      d: "M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z",
-      key: "sc7q7i"
-    }
-  ]
+  ["circle", { cx: "9", cy: "12", r: "1", key: "1vctgf" }],
+  ["circle", { cx: "9", cy: "5", r: "1", key: "hp0tcf" }],
+  ["circle", { cx: "9", cy: "19", r: "1", key: "fkjjf6" }],
+  ["circle", { cx: "15", cy: "12", r: "1", key: "1tmaij" }],
+  ["circle", { cx: "15", cy: "5", r: "1", key: "19l28e" }],
+  ["circle", { cx: "15", cy: "19", r: "1", key: "f4zoj3" }]
 ];
-const Funnel = createLucideIcon("funnel", __iconNode$l);
+const GripVertical = createLucideIcon("grip-vertical", __iconNode$l);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
@@ -37048,9 +37063,10 @@ function TemplateList({ config: config2, updateConfig }) {
             e.dataTransfer.setData("templateName", name);
           },
           style: { ...colorFromString(name) },
-          className: "relative group border border-slate-200 rounded-lg px-3 py-1.5 w-fit bg-white shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-grab active:cursor-grabbing",
+          className: "relative group border border-slate-200 rounded-lg px-2 py-1.5 pr-3 w-fit bg-white shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-grab active:cursor-grabbing flex items-center gap-1.5",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-slate-800 dark:text-slate-200 whitespace-nowrap", children: name.replaceAll("_", " ") }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GripVertical, { className: "w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 shrink-0" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-slate-800 whitespace-nowrap", children: name.replaceAll("_", " ") }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               Button,
               {
@@ -37331,61 +37347,81 @@ function Timeline({ config: config2, updateConfig }) {
     const isYearStart = index2 === 0 || items[index2 - 1].year !== item.year;
     const isYearEnd = index2 === items.length - 1 || items[index2 + 1].year !== item.year;
     const zIndex = items.length - index2;
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 relative flex flex-col items-stretch group pb-6", style: { zIndex }, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `absolute -top-2.5 left-1/2 translate-x-[-0.5rem] pointer-events-none w-0 overflow-visible transition-opacity ${item.assignedTemplate || dragOverKey === item.key ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "-rotate-60 whitespace-nowrap text-[10px] capitalize text-slate-500 origin-top-left font-semibold tracking-tighter", children: item.date }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "div",
-        {
-          onDragOver: (e) => {
-            e.preventDefault();
-            setDragOverKey(item.key);
-          },
-          onDragLeave: () => {
-            setDragOverKey(null);
-          },
-          onDrop: (e) => {
-            e.preventDefault();
-            setDragOverKey(null);
-            const templateName = e.dataTransfer.getData("templateName");
-            if (templateName) {
-              updateConfig("training_strategy", {
-                ...config2.training_strategy,
-                timeline: {
-                  ...config2.training_strategy.timeline,
-                  [item.key]: templateName
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        className: `relative flex flex-col items-stretch group pb-6 transition-[flex-grow] duration-200 ${dragOverKey === item.key ? "flex-3" : "flex-1"}`,
+        style: { zIndex },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: `absolute -top-3 left-1/2 translate-x-[-0.5rem] pointer-events-none w-0 overflow-visible transition-all duration-200 ${item.assignedTemplate || dragOverKey === item.key ? "opacity-100" : "opacity-0 group-hover:opacity-100"} ${dragOverKey === item.key ? "z-50" : ""}`,
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "div",
+                {
+                  className: `-rotate-60 whitespace-nowrap capitalize text-muted-foreground origin-top-left font-semibold tracking-tighter transition-all duration-300 ${dragOverKey === item.key ? "text-sm text-primary -top-3.5" : "text-xs"}`,
+                  children: item.date
                 }
-              });
+              )
             }
-          },
-          className: `flex-1 min-h-32 pb-6 pt-1 border-r border-dotted flex items-center justify-center transition-all hover:opacity-80
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              onDragOver: (e) => {
+                e.preventDefault();
+                setDragOverKey(item.key);
+              },
+              onDragLeave: () => {
+                setDragOverKey(null);
+              },
+              onDrop: (e) => {
+                e.preventDefault();
+                setDragOverKey(null);
+                const templateName = e.dataTransfer.getData("templateName");
+                if (templateName) {
+                  updateConfig("training_strategy", {
+                    ...config2.training_strategy,
+                    timeline: {
+                      ...config2.training_strategy.timeline,
+                      [item.key]: templateName
+                    }
+                  });
+                }
+              },
+              className: `flex-1 min-h-32 pb-6 pt-1 border-r border-dotted flex items-center justify-center transition-all hover:opacity-80
                   ${item.assignedTemplate ? "border-l-2 border-l-solid" : ""} 
                   ${isYearStart ? "border-l-0 border-l-card" : ""} 
                   ${isYearEnd ? "border-r-1 border-dashed !border-background" : ""}
                   ${item.year === "Finale Underway" ? "!border-r-0" : "left-0"}`,
-          style: { backgroundColor: color.backgroundColor, borderColor: color.borderColor },
-          children: item.assignedTemplate ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "div",
-            {
-              className: "[writing-mode:sideways-lr] relative cursor-pointer flex flex-row items-center content-center",
-              onClick: (e) => {
-                e.stopPropagation();
-                const newTimeline = { ...config2.training_strategy.timeline };
-                delete newTimeline[item.key];
-                updateConfig("training_strategy", { ...config2.training_strategy, timeline: newTimeline });
-              },
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-slate-800 whitespace-nowrap font-semibold flex-1", children: item.assignedTemplate.replaceAll("_", " ") }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2 p-0.75 w-5 h-5 relative bg-white border shadow-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash, { size: 12, className: " text-slate-400 hover:text-red-500" }) })
-              ]
+              style: { backgroundColor: color.backgroundColor, borderColor: color.borderColor },
+              children: item.assignedTemplate ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "div",
+                {
+                  className: "[writing-mode:sideways-lr] relative cursor-pointer flex flex-row items-center content-center",
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    const newTimeline = { ...config2.training_strategy.timeline };
+                    delete newTimeline[item.key];
+                    updateConfig("training_strategy", { ...config2.training_strategy, timeline: newTimeline });
+                  },
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-slate-800 whitespace-nowrap font-semibold flex-1", children: item.assignedTemplate.replaceAll("_", " ") }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2 p-0.75 w-5 h-5 relative bg-white border shadow-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash, { size: 12, className: " text-slate-400 hover:text-red-500" }) })
+                  ]
+                }
+              ) : /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {})
             }
-          ) : /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {})
-        }
-      ),
-      isYearStart && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `absolute h-fit w-max overflow-visible whitespace-nowrap bottom-1 flex items-center gap-2 font-bold text-xs uppercase text-muted-foreground tracking-wider ${item.year === "Finale Underway" ? "right-0 flex-row-reverse" : "left-0"}`, children: [
-        item.year,
-        item.year !== "Finale Underway" && /* @__PURE__ */ jsxRuntimeExports.jsx(Triangle, { size: 11, className: "rotate-90 shrink-0" })
-      ] })
-    ] }, item.key);
+          ),
+          isYearStart && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `absolute h-fit w-max overflow-visible whitespace-nowrap bottom-1 flex items-center gap-2 font-bold text-xs uppercase text-muted-foreground tracking-wider ${item.year === "Finale Underway" ? "right-0 flex-row-reverse" : "left-0"}`, children: [
+            item.year,
+            item.year !== "Finale Underway" && /* @__PURE__ */ jsxRuntimeExports.jsx(Triangle, { size: 11, className: "rotate-90 shrink-0" })
+          ] })
+        ]
+      },
+      item.key
+    );
   }) }) });
 }
 function TimelineSection({ config: config2, updateConfig }) {

@@ -50,11 +50,26 @@ export default function Timeline({ config, updateConfig }: Props) {
           const zIndex = items.length - index;
 
           return (
-            <div key={item.key} className="flex-1 relative flex flex-col items-stretch group pb-6" style={{ zIndex }}>
-
+            <div
+              key={item.key}
+              className={`relative flex flex-col items-stretch group pb-6 transition-[flex-grow] duration-200 ${
+                dragOverKey === item.key ? "flex-3" : "flex-1"
+              }`}
+              style={{ zIndex }}
+            >
               {/* Angled Date Label */}
-              <div className={`absolute -top-2.5 left-1/2 translate-x-[-0.5rem] pointer-events-none w-0 overflow-visible transition-opacity ${item.assignedTemplate || dragOverKey === item.key ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
-                <div className="-rotate-60 whitespace-nowrap text-[10px] capitalize text-slate-500 origin-top-left font-semibold tracking-tighter">
+              <div
+                className={`absolute -top-3 left-1/2 translate-x-[-0.5rem] pointer-events-none w-0 overflow-visible transition-all duration-200 ${
+                  item.assignedTemplate || dragOverKey === item.key
+                    ? "opacity-100"
+                    : "opacity-0 group-hover:opacity-100"
+                } ${dragOverKey === item.key ? "z-50" : ""}`}
+              >
+                <div
+                  className={`-rotate-60 whitespace-nowrap capitalize text-muted-foreground origin-top-left font-semibold tracking-tighter transition-all duration-300 ${
+                    dragOverKey === item.key ? "text-sm text-primary -top-3.5" : "text-xs"
+                  }`}
+                >
                   {item.date}
                 </div>
               </div>

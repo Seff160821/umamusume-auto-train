@@ -540,6 +540,14 @@
     top: calc(var(--spacing) * -2.5);
   }
 
+  .-top-3 {
+    top: calc(var(--spacing) * -3);
+  }
+
+  .-top-3\.5 {
+    top: calc(var(--spacing) * -3.5);
+  }
+
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
@@ -945,6 +953,10 @@
     height: calc(var(--spacing) * 3);
   }
 
+  .h-3\.5 {
+    height: calc(var(--spacing) * 3.5);
+  }
+
   .h-4 {
     height: calc(var(--spacing) * 4);
   }
@@ -1107,6 +1119,10 @@
 
   .w-3 {
     width: calc(var(--spacing) * 3);
+  }
+
+  .w-3\.5 {
+    width: calc(var(--spacing) * 3.5);
   }
 
   .w-3\/12 {
@@ -1301,6 +1317,18 @@
     flex: 1;
   }
 
+  .flex-2 {
+    flex: 2;
+  }
+
+  .flex-3 {
+    flex: 3;
+  }
+
+  .flex-\[2\] {
+    flex: 2;
+  }
+
   .flex-shrink-0 {
     flex-shrink: 0;
   }
@@ -1390,6 +1418,13 @@
 
   .translate-none {
     translate: none;
+  }
+
+  .scale-125 {
+    --tw-scale-x: 125%;
+    --tw-scale-y: 125%;
+    --tw-scale-z: 125%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
 
   .scale-3d {
@@ -2415,6 +2450,10 @@
     padding-right: calc(var(--spacing) * 2);
   }
 
+  .pr-3 {
+    padding-right: calc(var(--spacing) * 3);
+  }
+
   .pr-4 {
     padding-right: calc(var(--spacing) * 4);
   }
@@ -3031,6 +3070,12 @@
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
 
+  .transition-\[flex-grow\] {
+    transition-property: flex-grow;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+
   .transition-all {
     transition-property: all;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -3183,6 +3228,10 @@
   @media (hover: hover) {
     .group-hover\:text-primary:is(:where(.group):hover *) {
       color: var(--primary);
+    }
+
+    .group-hover\:text-slate-600:is(:where(.group):hover *) {
+      color: var(--color-slate-600);
     }
 
     .group-hover\:opacity-100:is(:where(.group):hover *), .group-hover\/card\:opacity-100:is(:where(.group\/card):hover *) {
