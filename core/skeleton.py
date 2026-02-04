@@ -348,6 +348,7 @@ def record_and_finalize_turn(state_obj, action):
   if LIMIT_TURNS > 0:
     if action_count >= LIMIT_TURNS:
       info(f"Completed {action_count} actions, stopping bot as requested.")
+      notify("success")
       quit()
 
 def validate_turn(state):

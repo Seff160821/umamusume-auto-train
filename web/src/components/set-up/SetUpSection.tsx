@@ -16,7 +16,9 @@ export default function SetUpSection({ config, updateConfig }: Props) {
     use_adb,
     device_id,
     notifications_enabled,
+    info_notification,
     error_notification,
+    success_notification,
   } = config;
 
   return (
@@ -79,18 +81,44 @@ export default function SetUpSection({ config, updateConfig }: Props) {
           <span className="font-base">Enable notification sounds</span>
         </label>
         {notifications_enabled && (
-          <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
-            <div className="flex gap-2 items-center">
-              <span className="font-base">
-                Error sound
-              </span>
-            </div>
-            <Input
-              className="w-48"
-              value={error_notification}
-              onChange={(e) => updateConfig("error_notification", e.target.value)}
-            />
-          </label>
+          <>
+            <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
+              <div className="flex gap-2 items-center">
+                <span className="font-base">
+                  Info sound
+                </span>
+              </div>
+              <Input
+                className="w-48"
+                value={info_notification}
+                onChange={(e) => updateConfig("info_notification", e.target.value)}
+              />
+            </label>
+            <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
+              <div className="flex gap-2 items-center">
+                <span className="font-base">
+                  Error sound
+                </span>
+              </div>
+              <Input
+                className="w-48"
+                value={error_notification}
+                onChange={(e) => updateConfig("error_notification", e.target.value)}
+              />
+            </label>
+            <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
+              <div className="flex gap-2 items-center">
+                <span className="font-base">
+                  Success sound
+                </span>
+              </div>
+              <Input
+                className="w-48"
+                value={success_notification}
+                onChange={(e) => updateConfig("success_notification", e.target.value)}
+              />
+            </label>
+          </>
         )}
       </div>
     </div>

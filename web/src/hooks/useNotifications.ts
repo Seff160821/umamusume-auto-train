@@ -10,8 +10,15 @@ export function useNotifications(config: Config) {
         
         if (data.notifications && data.notifications.length > 0) {
           data.notifications.forEach((type: string) => {
-            if (type === "error" && config.notifications_enabled && config.error_notification) {
-              const audio = new Audio(`/notifications/${config.error_notification}`);
+            if (!config.notifications_enabled) return;
+
+            let soundFile = "";
+            if (type === "error") soundFile = config.error_notification;
+            if (type === "info") soundFile = config.info_notification;
+            if (type === "success") soundFile = config.success_notification;
+
+            if (soundFile) {
+              const audio = new Audio(`/notifications/${soundFile}`);
               audio.play().catch(e => console.error("Failed to play notification sound:", e));
             }
           });
