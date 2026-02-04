@@ -196,7 +196,7 @@ def go_to_racebox_top():
     device_action.click(constants.RACE_SCROLL_BOTTOM_MOUSE_POS)
     sleep(0.25)
     screenshot2 = device_action.screenshot(region_ltrb=constants.RACE_LIST_BOX_BBOX)
-    if are_screenshots_same(screenshot1, screenshot2, diff_threshold=15):
+    if are_screenshots_same(screenshot1, screenshot2, diff_threshold=5):
       return True
   return False
 
@@ -246,7 +246,7 @@ def enter_race(race_name="any", race_image_path="", options=None):
     device_action.click(constants.RACE_SCROLL_TOP_MOUSE_POS, duration=0)
     sleep(0.25)
     screenshot2 = device_action.screenshot(region_ltrb=constants.RACE_LIST_BOX_BBOX)
-    if are_screenshots_same(screenshot1, screenshot2, diff_threshold=15):
+    if are_screenshots_same(screenshot1, screenshot2, diff_threshold=5):
       info(f"Couldn't find race image")
       device_action.locate_and_click("assets/buttons/back_btn.png", min_search_time=get_secs(2), region_ltrb=constants.SCREEN_BOTTOM_BBOX)
       return False

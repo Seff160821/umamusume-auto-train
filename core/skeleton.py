@@ -46,6 +46,7 @@ templates = {
   "tazuna": "assets/ui/tazuna_hint.png",
   "infirmary": "assets/buttons/infirmary_btn.png",
   "claw_btn": "assets/buttons/claw_btn.png",
+  "claw_btn_2": "assets/buttons/claw_btn_2.png",
   "ok_2_btn": "assets/buttons/ok_2_btn.png"
 }
 
@@ -152,13 +153,21 @@ def career_lobby(dry_run_turn=False):
         continue
 
       # adding skip function for claw machine
-      if matches.get("claw_btn", False):
+      if matches.get("claw_btn", False) or matches.get("claw_btn_2", False):
         if not config.USE_SKIP_CLAW_MACHINE:
           continue
 
-        info(f"Sleeping {get_secs(10)} seconds to allow for claw machine reset")
-        #sleep(10)
-        play_claw_machine(matches["claw_btn"][0])
+        claw_match = ""
+        if matches.get("claw_btn", False):
+          claw_match = matches["claw_btn"][0]
+        elif matches.get("claw_btn_2", False):
+          claw_match = matches["claw_btn_2"][0]
+        else:
+          warning("Got into claw machine match but there's no match in both versions, this should never happen.")
+          continue
+
+        sleep(0.5)
+        play_claw_machine(claw_match)
         info("Played claw machine.")
         non_match_count = 0
         continue
