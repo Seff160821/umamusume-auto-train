@@ -40,11 +40,11 @@ export default function TemplateList({ config, updateConfig }: Props) {
                   e.dataTransfer.setData("templateName", name);
                 }}
                 style={{ ...colorFromString(name) }}
-                className="relative group border border-slate-200 rounded-lg px-2 py-1.5 pr-3 w-fit bg-white shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-grab active:cursor-grabbing flex items-center gap-1.5"
+                className="relative group border border-slate-200 rounded-lg px-2 py-2 pr-3 w-fit bg-white shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-grab active:cursor-grabbing flex items-center gap-1.5"
               >
                 <GripVertical className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 shrink-0" />
                 <div>
-                  <p className="font-semibold text-slate-800 whitespace-nowrap">
+                  <p className="font-semibold text-slate-800 whitespace-nowrap text-sm">
                     {name.replaceAll("_", " ")}
                   </p>
 

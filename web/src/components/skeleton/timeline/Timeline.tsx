@@ -67,7 +67,7 @@ export default function Timeline({ config, updateConfig }: Props) {
               >
                 <div
                   className={`-rotate-60 whitespace-nowrap capitalize text-muted-foreground origin-top-left font-semibold tracking-tighter transition-all duration-300 ${
-                    dragOverKey === item.key ? "text-sm text-primary -top-3.5" : "text-xs"
+                    dragOverKey === item.key ? "text-sm -top-3.5" : "text-xs"
                   }`}
                 >
                   {item.date}
@@ -98,14 +98,14 @@ export default function Timeline({ config, updateConfig }: Props) {
                   }
                 }}
                 className={`flex-1 min-h-32 pb-6 pt-1 border-r border-dotted flex items-center justify-center transition-all hover:opacity-80
-                  ${item.assignedTemplate ? "border-l-2 border-l-solid" : ""} 
+                  ${item.assignedTemplate ? "border-l-2 border-l-solid min-w-12" : ""} 
                   ${isYearStart ? "border-l-0 border-l-card" : ""} 
                   ${isYearEnd ? "border-r-1 border-dashed !border-background" : ""}
                   ${item.year === "Finale Underway" ? "!border-r-0" : "left-0"}`}
                 style={{ backgroundColor: color.backgroundColor, borderColor: color.borderColor }}
               >
                 {item.assignedTemplate ? (
-                  <div className="[writing-mode:sideways-lr] relative cursor-pointer flex flex-row items-center content-center"
+                  <div className="[writing-mode:sideways-lr] relative cursor-pointer flex flex-row items-stretch content-center"
                     onClick={(e) => {
                       e.stopPropagation();
                       const newTimeline = { ...config.training_strategy.timeline };
@@ -114,7 +114,7 @@ export default function Timeline({ config, updateConfig }: Props) {
                     }}
                   >
 
-                    <div className="text-slate-800 whitespace-nowrap font-semibold flex-1">
+                    <div className="text-slate-800 whitespace-nowrap font-semibold flex-1 text-sm">
                       {item.assignedTemplate.replaceAll("_", " ")}
                     </div>
 

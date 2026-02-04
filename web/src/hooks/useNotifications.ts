@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Config } from "../types";
+import type { Config } from "../types";
 
 export function useNotifications(config: Config) {
   useEffect(() => {

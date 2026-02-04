@@ -37149,10 +37149,10 @@ function TemplateList({ config: config2, updateConfig }) {
             e.dataTransfer.setData("templateName", name);
           },
           style: { ...colorFromString(name) },
-          className: "relative group border border-slate-200 rounded-lg px-2 py-1.5 pr-3 w-fit bg-white shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-grab active:cursor-grabbing flex items-center gap-1.5",
+          className: "relative group border border-slate-200 rounded-lg px-2 py-2 pr-3 w-fit bg-white shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-grab active:cursor-grabbing flex items-center gap-1.5",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(GripVertical, { className: "w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 shrink-0" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-slate-800 whitespace-nowrap", children: name.replaceAll("_", " ") }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold text-slate-800 whitespace-nowrap text-sm", children: name.replaceAll("_", " ") }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               Button,
               {
@@ -37446,7 +37446,7 @@ function Timeline({ config: config2, updateConfig }) {
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "div",
                 {
-                  className: `-rotate-60 whitespace-nowrap capitalize text-muted-foreground origin-top-left font-semibold tracking-tighter transition-all duration-300 ${dragOverKey === item.key ? "text-sm text-primary -top-3.5" : "text-xs"}`,
+                  className: `-rotate-60 whitespace-nowrap capitalize text-muted-foreground origin-top-left font-semibold tracking-tighter transition-all duration-300 ${dragOverKey === item.key ? "text-sm -top-3.5" : "text-xs"}`,
                   children: item.date
                 }
               )
@@ -37477,7 +37477,7 @@ function Timeline({ config: config2, updateConfig }) {
                 }
               },
               className: `flex-1 min-h-32 pb-6 pt-1 border-r border-dotted flex items-center justify-center transition-all hover:opacity-80
-                  ${item.assignedTemplate ? "border-l-2 border-l-solid" : ""} 
+                  ${item.assignedTemplate ? "border-l-2 border-l-solid min-w-12" : ""} 
                   ${isYearStart ? "border-l-0 border-l-card" : ""} 
                   ${isYearEnd ? "border-r-1 border-dashed !border-background" : ""}
                   ${item.year === "Finale Underway" ? "!border-r-0" : "left-0"}`,
@@ -37485,7 +37485,7 @@ function Timeline({ config: config2, updateConfig }) {
               children: item.assignedTemplate ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
                 "div",
                 {
-                  className: "[writing-mode:sideways-lr] relative cursor-pointer flex flex-row items-center content-center",
+                  className: "[writing-mode:sideways-lr] relative cursor-pointer flex flex-row items-stretch content-center",
                   onClick: (e) => {
                     e.stopPropagation();
                     const newTimeline = { ...config2.training_strategy.timeline };
@@ -37493,7 +37493,7 @@ function Timeline({ config: config2, updateConfig }) {
                     updateConfig("training_strategy", { ...config2.training_strategy, timeline: newTimeline });
                   },
                   children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-slate-800 whitespace-nowrap font-semibold flex-1", children: item.assignedTemplate.replaceAll("_", " ") }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-slate-800 whitespace-nowrap font-semibold flex-1 text-sm", children: item.assignedTemplate.replaceAll("_", " ") }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2 p-0.75 w-5 h-5 relative bg-white border shadow-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash, { size: 12, className: " text-slate-400 hover:text-red-500" }) })
                   ]
                 }
