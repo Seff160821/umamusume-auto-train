@@ -19678,7 +19678,8 @@ const buttonVariants = cva(
         default: "h-10 px-4 py-2 has-[>svg]:px-3",
         sm: "h-9 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
         lg: "h-11 rounded-md px-8 has-[>svg]:px-4",
-        icon: "size-10"
+        icon: "size-10",
+        smallicon: "size-9 !h-9"
       }
     },
     defaultVariants: {
@@ -19704,7 +19705,7 @@ function Input({ className, type, ...props }) {
       type,
       "data-slot": "input",
       className: cn(
-        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-10 w-fit min-w-0 rounded-md border bg-transparent px-3 py-2 text-base shadow-lg transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-fit min-w-0 rounded-md border bg-transparent px-3 py-2 text-base shadow-lg transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
         "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         className
@@ -24900,7 +24901,7 @@ function SelectTrigger({
       "data-slot": "select-trigger",
       "data-size": size2,
       className: cn(
-        "border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-lg transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-10 data-[size=sm]:h-9 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-lg transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       ),
       ...props,
@@ -25878,10 +25879,10 @@ function SetUpSection({ config: config2, updateConfig }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "section-card", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-3xl font-semibold mb-6 flex items-center gap-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Cog, { className: "text-primary" }),
-      "Set-Up"
+      "Trainer Set-Up"
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-2", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "uma-label col-span-3", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Sleep Time Multiplier" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Input,
@@ -25894,7 +25895,7 @@ function SetUpSection({ config: config2, updateConfig }) {
           }
         )
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex gap-2 items-center cursor-pointer", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "uma-label", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Checkbox,
           {
@@ -25904,22 +25905,14 @@ function SetUpSection({ config: config2, updateConfig }) {
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Use ADB" })
       ] }),
-      !use_adb2 && /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: `uma-label ${!use_adb2 ? "" : "disabled"}`, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 items-center", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Window Name" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltips, { children: "If you're using an emulator, set this to your emulator's window name (case-sensitive)." })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Input,
-          {
-            id: "window-name",
-            className: "w-48",
-            value: window_name2,
-            onChange: (e) => updateConfig("window_name", e.target.value)
-          }
-        )
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Input, { className: "w-48", value: window_name2, onChange: (e) => updateConfig("window_name", e.target.value) })
       ] }),
-      use_adb2 && /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: `uma-label ${use_adb2 ? "" : "disabled"}`, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Device ID" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Input,
@@ -25931,50 +25924,35 @@ function SetUpSection({ config: config2, updateConfig }) {
           }
         )
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex gap-2 items-center cursor-pointer", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Checkbox,
-          {
-            checked: notifications_enabled2,
-            onCheckedChange: () => updateConfig("notifications_enabled", !notifications_enabled2)
-          }
-        ),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "col-span-3 uma-label", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Checkbox, { checked: notifications_enabled2, onCheckedChange: () => updateConfig("notifications_enabled", !notifications_enabled2) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Enable notification sounds" })
       ] }),
-      notifications_enabled2 && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2 items-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Info sound" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Input,
-            {
-              className: "w-48",
-              value: info_notification2,
-              onChange: (e) => updateConfig("info_notification", e.target.value)
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2 items-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Error sound" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Input,
-            {
-              className: "w-48",
-              value: error_notification2,
-              onChange: (e) => updateConfig("error_notification", e.target.value)
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2 items-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Success sound" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Input,
-            {
-              className: "w-48",
-              value: success_notification2,
-              onChange: (e) => updateConfig("success_notification", e.target.value)
-            }
-          )
-        ] })
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: `uma-label ${notifications_enabled2 ? "" : "disabled"}`, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2 items-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Info sound" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Input, { className: "w-48", value: info_notification2, onChange: (e) => updateConfig("info_notification", e.target.value) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: `uma-label ${notifications_enabled2 ? "" : "disabled"}`, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2 items-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Error sound" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            className: "w-48",
+            value: error_notification2,
+            onChange: (e) => updateConfig("error_notification", e.target.value)
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: `uma-label ${notifications_enabled2 ? "" : "disabled"}`, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2 items-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base", children: "Success sound" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            className: "w-48",
+            value: success_notification2,
+            onChange: (e) => updateConfig("success_notification", e.target.value)
+          }
+        )
       ] })
     ] })
   ] });
@@ -29901,7 +29879,7 @@ function RaceScheduleSection$1({ config: config2, updateConfig }) {
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 h-fit items-center cursor-pointer", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex flex-row gap-2 w-fit items-center cursor-pointer", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "shrink-0 mr-2", children: "Race Turn Treshold" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Input, { className: "w-18", type: "number", step: 1, value: race_turn_threshold2, onChange: (e) => updateConfig("race_turn_threshold", e.target.valueAsNumber) })
         ] }),
@@ -37687,7 +37665,7 @@ function App() {
                 Button,
                 {
                   variant: "ghost",
-                  size: "icon",
+                  size: "smallicon",
                   className: `rounded-l-none border-l border-input bg-card hover:bg-accent h-10 w-10 transition-colors shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 ${isEditing ? "text-primary" : "text-muted-foreground"}`,
                   onClick: () => setIsEditing(!isEditing),
                   children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 14, className: isEditing ? "fill-current" : "" })

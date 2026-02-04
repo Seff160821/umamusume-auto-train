@@ -42,7 +42,7 @@ export default function RaceScheduleSection({ config, updateConfig }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
 
         <div className="flex flex-col gap-2">
-          <label className="flex flex-row gap-2 h-fit items-center cursor-pointer">
+          <label className="flex flex-row gap-2 w-fit items-center cursor-pointer">
             <span className="shrink-0 mr-2">Race Turn Treshold</span>
             <Input className="w-18" type="number" step={1} value={race_turn_threshold} onChange={(e) => updateConfig("race_turn_threshold", e.target.valueAsNumber)} />
           </label>

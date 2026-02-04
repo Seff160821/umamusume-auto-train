@@ -7,6 +7,10 @@
   border-left-style: solid;
 }
 
+@utility uma-label {
+  @apply flex flex-row gap-2 w-fit items-center cursor-pointer;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -240,4 +244,9 @@
   border-color: color-mix(in oklab, var(--border) 80%, transparent);
   border-radius: calc(var(--radius) + 4px);
   outline-color: color-mix(in oklab, var(--primary) 50%, transparent);
+}
+
+label.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }

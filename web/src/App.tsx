@@ -163,7 +163,7 @@ function App() {
                   </Select>
                   <Button
                     variant="ghost"
-                    size="icon"
+                    size="smallicon"
                     className={`rounded-l-none border-l border-input bg-card hover:bg-accent h-10 w-10 transition-colors shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 ${isEditing ? "text-primary" : "text-muted-foreground"}`}
                     onClick={() => setIsEditing(!isEditing)}
                   >
