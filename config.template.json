@@ -49,6 +49,7 @@
   "info_notification": "sfx_01.mp3",
   "error_notification": "sfx_02.mp3",
   "success_notification": "sfx_03.mp3",
+  "notification_volume": 0.3,
   "use_race_schedule": false,
   "cancel_consecutive_race": true,
   "position_selection_enabled": true,

@@ -12119,9 +12119,10 @@ const rest_before_summer_energy = 60;
 const use_adb = false;
 const device_id = "127.0.0.1:5555";
 const notifications_enabled = true;
-const info_notification = "sfx_03.mp3";
-const error_notification = "sfx_02.mp3";
-const success_notification = "sfx_01.mp3";
+const info_notification = "harikitte_ikou.mp3";
+const error_notification = "harikitte_ikou.mp3";
+const success_notification = "harikitte_ikou.mp3";
+const notification_volume = 0.8;
 const use_race_schedule = false;
 const cancel_consecutive_race = true;
 const position_selection_enabled = false;
@@ -12166,6 +12167,7 @@ const rawConfig = {
   info_notification,
   error_notification,
   success_notification,
+  notification_volume,
   use_race_schedule,
   cancel_consecutive_race,
   position_selection_enabled,
@@ -15798,6 +15800,7 @@ const ConfigSchema = object({
   info_notification: string(),
   error_notification: string(),
   success_notification: string(),
+  notification_volume: number(),
   use_race_schedule: boolean(),
   cancel_consecutive_race: boolean(),
   position_selection_enabled: boolean(),
@@ -25843,7 +25846,8 @@ function SetUpSection({ config: config2, updateConfig }) {
     notifications_enabled: notifications_enabled2,
     info_notification: info_notification2,
     error_notification: error_notification2,
-    success_notification: success_notification2
+    success_notification: success_notification2,
+    notification_volume: notification_volume2
   } = config2;
   const [notificationSounds, setNotificationSounds] = reactExports.useState([]);
   reactExports.useEffect(() => {
@@ -25925,7 +25929,29 @@ function SetUpSection({ config: config2, updateConfig }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "w-48", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Select sound" }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: notificationSounds.map((sound) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: sound, children: sound }, sound)) })
         ] })
-      ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: `uma-label ${notifications_enabled2 ? "" : "disabled"} col-span-3`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-base min-w-[160px]", children: "Notification volume" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "input",
+          {
+            type: "range",
+            min: 0,
+            max: 1,
+            step: "any",
+            value: notification_volume2,
+            onChange: (e) => updateConfig(
+              "notification_volume",
+              Math.round(parseFloat(e.target.value) * 100) / 100
+            ),
+            className: "w-64"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "w-14 text-right tabular-nums", children: [
+          Math.round(notification_volume2 * 100),
+          "%"
+        ] })
+      ] }) })
     ] })
   ] });
 }

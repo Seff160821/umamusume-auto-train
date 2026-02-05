@@ -102,13 +102,13 @@ def career_lobby(dry_run_turn=False):
       device_action.flush_screenshot_cache()
       screenshot = device_action.screenshot()
 
-      if non_match_count > 20:
+      if non_match_count > 1:
         info("Career lobby stuck, quitting.")
         complete_career_btn = device_action.locate("assets/buttons/complete_career_btn.png", min_search_time=get_secs(2))
         if complete_career_btn is not None:
-          device_action.stop_bot("finished", f"assets/notifications/{config.SUCCESS_NOTIFICATION}")
+          device_action.stop_bot("finished", f"assets/notifications/{config.SUCCESS_NOTIFICATION}", volume = config.NOTIFICATION_VOLUME)
         else:
-          device_action.stop_bot("stuck", f"assets/notifications/{config.ERROR_NOTIFICATION}")
+          device_action.stop_bot("stuck", f"assets/notifications/{config.ERROR_NOTIFICATION}", volume = config.NOTIFICATION_VOLUME)
       if constants.SCENARIO_NAME == "":
         info("Trying to find what scenario we're on.")
         if device_action.locate_and_click("assets/unity/unity_cup_btn.png", min_search_time=get_secs(1)):
@@ -316,7 +316,7 @@ def career_lobby(dry_run_turn=False):
           buy_skill(state_obj, action_count, race_check=True)
         if dry_run_turn:
           info("Dry run turn, quitting.")
-          device_action.stop_bot("finished", f"assets/notifications/{config.SUCCESS_NOTIFICATION}")
+          device_action.stop_bot("finished", f"assets/notifications/{config.SUCCESS_NOTIFICATION}", volume = config.NOTIFICATION_VOLUME)
         elif not action.run():
           if action.available_actions:  # Check if the list is not empty
             action.available_actions.pop(0)
@@ -359,7 +359,7 @@ def record_and_finalize_turn(state_obj, action):
   if LIMIT_TURNS > 0:
     if action_count >= LIMIT_TURNS:
       info(f"Completed {action_count} actions, stopping bot as requested.")
-      device_action.stop_bot("finished", f"assets/notifications/{config.SUCCESS_NOTIFICATION}")
+      device_action.stop_bot("finished", f"assets/notifications/{config.SUCCESS_NOTIFICATION}", volume = config.NOTIFICATION_VOLUME)
 
 def validate_turn(state):
   if state["turn"] == -1:

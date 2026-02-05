@@ -43,6 +43,7 @@ export const ConfigSchema = z.object({
   info_notification: z.string(),
   error_notification: z.string(),
   success_notification: z.string(),
+  notification_volume: z.number(),
   use_race_schedule: z.boolean(),
   cancel_consecutive_race: z.boolean(),
   position_selection_enabled: z.boolean(),

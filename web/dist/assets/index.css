@@ -1083,6 +1083,10 @@
     width: calc(var(--spacing) * 12);
   }
 
+  .w-14 {
+    width: calc(var(--spacing) * 14);
+  }
+
   .w-16 {
     width: calc(var(--spacing) * 16);
   }
@@ -1217,6 +1221,10 @@
 
   .min-w-\[8rem\] {
     min-width: 8rem;
+  }
+
+  .min-w-\[160px\] {
+    min-width: 160px;
   }
 
   .min-w-\[var\(--radix-select-trigger-width\)\] {

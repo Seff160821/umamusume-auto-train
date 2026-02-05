@@ -21,6 +21,7 @@ export default function SetUpSection({ config, updateConfig }: Props) {
     info_notification,
     error_notification,
     success_notification,
+    notification_volume
   } = config;
   const [notificationSounds, setNotificationSounds] = useState<string[]>([]);
 
@@ -85,7 +86,7 @@ export default function SetUpSection({ config, updateConfig }: Props) {
         <label className={`uma-label ${notifications_enabled ? "" : "disabled"}`}>
           <div className="flex gap-2 items-center">
             <span className="font-base">
-              Info sound
+              Info Sound
             </span>
           </div>
           <Select value={info_notification} onValueChange={(v) => updateConfig("info_notification", v)}>
@@ -104,7 +105,7 @@ export default function SetUpSection({ config, updateConfig }: Props) {
         <label className={`uma-label ${notifications_enabled ? "" : "disabled"}`}>
           <div className="flex gap-2 items-center">
             <span className="font-base">
-              Error sound
+              Error Sound
             </span>
           </div>
           <Select value={error_notification} onValueChange={(v) => updateConfig("error_notification", v)}>
@@ -123,7 +124,7 @@ export default function SetUpSection({ config, updateConfig }: Props) {
         <label className={`uma-label ${notifications_enabled ? "" : "disabled"}`}>
           <div className="flex gap-2 items-center">
             <span className="font-base">
-              Success sound
+              Success Sound
             </span>
           </div>
           <Select value={success_notification} onValueChange={(v) => updateConfig("success_notification", v)}>
@@ -138,6 +139,32 @@ export default function SetUpSection({ config, updateConfig }: Props) {
               ))}
             </SelectContent>
           </Select>
+        </label>
+        <label className={`uma-label ${notifications_enabled ? "" : "disabled"} col-span-3`}>
+          <div className="flex items-center gap-4">
+            <span className="font-base min-w-[160px]">
+              Notification Volume
+            </span>
+
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step="any"
+              value={notification_volume}
+              onChange={(e) =>
+                updateConfig(
+                  "notification_volume",
+                  Math.round(parseFloat(e.target.value) * 100) / 100
+                )
+              }
+              className="w-64"
+            />
+
+            <span className="w-14 text-right tabular-nums">
+              {Math.round(notification_volume * 100)}%
+            </span>
+          </div>
         </label>
       </div>
     </div>

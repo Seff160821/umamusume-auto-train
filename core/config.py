@@ -55,6 +55,7 @@ def reload_config(print_config=True):
     load_var('INFO_NOTIFICATION', config["info_notification"])
     load_var('ERROR_NOTIFICATION', config["error_notification"])
     load_var('SUCCESS_NOTIFICATION', config["success_notification"])
+    load_var('NOTIFICATION_VOLUME', config["notification_volume"])
     load_var('DO_MISSION_RACES_IF_POSSIBLE', config["do_mission_races_if_possible"])
     load_var('PRIORITIZE_MISSIONS_OVER_G1', config["prioritize_missions_over_g1"])
     load_var('USE_OPTIMAL_EVENT_CHOICE', config["event"]["use_optimal_event_choice"])
