@@ -12094,50 +12094,50 @@ function requireClient() {
   return client.exports;
 }
 var clientExports = requireClient();
-const config_name = "Preset1";
-const theme = "50";
-const priority_stat = ["spd", "sta", "wit", "pwr", "guts"];
-const priority_weights = [1.25, 1.15, 1.1, 0.5, -0.2];
-const stat_caps = { "spd": 1145, "sta": 600, "pwr": 600, "guts": 250, "wit": 1145 };
-const sleep_time_multiplier = 1.1;
+const config_name = "Sprint/Mile - Taiki Shuttle";
+const theme = "0";
+const priority_stat = ["spd", "wit", "pwr", "sta", "guts"];
+const priority_weights = [1, 0.5, 0.4, -0.5, -0.5];
+const stat_caps = { "spd": 1075, "sta": 600, "pwr": 1075, "guts": 900, "wit": 900 };
+const sleep_time_multiplier = 1;
 const skip_training_energy = 40;
-const never_rest_energy = 80;
+const never_rest_energy = 65;
 const skip_infirmary_unless_missing_energy = 20;
-const wit_training_score_ratio_threshold = 1.25;
-const rainbow_support_weight_addition = 1.2;
-const non_max_support_weight = 0.75;
-const race_turn_threshold = 5;
-const do_mission_races_if_possible = true;
-const prioritize_missions_over_g1 = true;
-const minimum_condition_severity = 2;
-const minimum_mood = "GOOD";
-const priority_weight = "MEDIUM";
-const minimum_mood_junior_year = "NORMAL";
-const maximum_failure = 5;
-const minimum_aptitudes = { "surface": "b", "distance": "b", "style": "b" };
-const rest_before_summer_energy = 60;
-const use_adb = false;
-const device_id = "127.0.0.1:5555";
-const notifications_enabled = true;
-const info_notification = "harikitte_ikou.mp3";
-const error_notification = "harikitte_ikou.mp3";
-const success_notification = "harikitte_ikou.mp3";
-const notification_volume = 0.3;
-const use_race_schedule = false;
-const cancel_consecutive_race = true;
-const position_selection_enabled = false;
-const enable_positions_by_race = false;
-const preferred_position = "pace";
-const positions_by_race = { "sprint": "front", "mile": "front", "medium": "late", "long": "late" };
 const hint_hunting_enabled = false;
 const hint_hunting_weights = { "spd": 0.5, "sta": 6, "pwr": 0.5, "guts": 0.5, "wit": 6 };
 const use_skip_claw_machine = true;
+const wit_training_score_ratio_threshold = 1.25;
+const rainbow_support_weight_addition = 1;
+const non_max_support_weight = 0.75;
 const scenario_gimmick_weight = 1;
-const race_schedule = [{ "name": "Hopeful Stakes", "year": "Junior Year", "date": "Late Dec" }, { "name": "Asahi Hai Futurity Stakes", "year": "Junior Year", "date": "Early Dec" }, { "name": "Satsuki Sho", "year": "Classic Year", "date": "Early Apr" }, { "name": "NHK Mile Cup", "year": "Classic Year", "date": "Early May" }, { "name": "Tokyo Yushun Japanese Derby", "year": "Classic Year", "date": "Late May" }, { "name": "Tenno Sho Autumn", "year": "Classic Year", "date": "Late Oct" }, { "name": "Japan Cup", "year": "Classic Year", "date": "Late Nov" }, { "name": "Arima Kinen", "year": "Classic Year", "date": "Late Dec" }, { "name": "Osaka Hai", "year": "Senior Year", "date": "Late Mar" }, { "name": "Victoria Mile", "year": "Senior Year", "date": "Early May" }, { "name": "Yasuda Kinen", "year": "Senior Year", "date": "Early Jun" }, { "name": "Tenno Sho Autumn", "year": "Senior Year", "date": "Late Oct" }, { "name": "Japan Cup", "year": "Senior Year", "date": "Late Nov" }, { "name": "Arima Kinen", "year": "Senior Year", "date": "Late Dec" }, { "name": "Kyoto Junior Stakes", "year": "Junior Year", "date": "Late Nov" }];
-const skill = { "is_auto_buy_skill": false, "skill_check_turns": 10, "check_skill_before_races": false, "skill_pts_check": 500, "skill_list": ["Left-Handed ○", "Corner Recovery ○"] };
-const event = { "use_optimal_event_choice": true, "event_choices": [{ "character_name": "Manhattan Cafe (Original)", "event_name": "At Long Last...", "chosen": 2 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "One with the Shadows", "chosen": 2 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "Within a World of Illusion", "chosen": 2 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "The Raven-Haired Barista", "chosen": 2 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "A Pulse-Pounding Paranormal Tour", "chosen": 1 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "The Visitor", "chosen": 1 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "A Demon's Whisper", "chosen": 1 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "A Hearty Helping of Kindness", "chosen": 2 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "My Very Own Coffee", "chosen": 2 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "Just How You Like It", "chosen": 1 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "A Flavor Just for Us", "chosen": 3 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "A Cafe for Cafe", "chosen": 2 }, { "character_name": "Manhattan Cafe (Original)", "event_name": "A Spirited Audience", "chosen": 1 }, { "character_name": "Kitasan Black (SSR) (SPD)", "event_name": "Ah, Friendship", "chosen": 2 }, { "character_name": "Kitasan Black (SSR) (SPD)", "event_name": "(❯❯) Paying It Forward", "chosen": 1 }, { "character_name": "Kitasan Black (SSR) (SPD)", "event_name": "Ah, Home Sweet Home", "chosen": 2 }, { "character_name": "URA Finale", "event_name": "Best Foot Forward!", "chosen": 2 }, { "character_name": "URA Finale", "event_name": "A Trainer's Knowledge", "chosen": 2 }, { "character_name": "URA Finale", "event_name": "Exhilarating! What a Scoop!", "chosen": 1 }, { "character_name": "Matikanefukukitaru (SR) (WIT)", "event_name": "(❯❯) Guidance and Friends", "chosen": 2 }, { "character_name": "Daiwa Scarlet (SSR) (POW)", "event_name": "This Is Nothing!", "chosen": 2 }, { "character_name": "Daiwa Scarlet (SSR) (POW)", "event_name": "I'm Going to Win Tomorrow!", "chosen": 2 }, { "character_name": "Daiwa Scarlet (SSR) (POW)", "event_name": "(❯) Number One Reactions?", "chosen": 1 }, { "character_name": "Matikanefukukitaru (R) (WIT)", "event_name": "Maximum Spirituality", "chosen": 1 }, { "character_name": "Matikanefukukitaru (R) (WIT)", "event_name": "When Piety and Kindness Intersect", "chosen": 2 }, { "character_name": "King Halo (R) (SPD)", "event_name": "You May Socialize With Me!", "chosen": 1 }, { "character_name": "King Halo (R) (SPD)", "event_name": "You May Advise Me!", "chosen": 1 }, { "character_name": "Riko Kashimoto (SSR) (PAL)", "event_name": "(❯❯❯) Picture Their Joy", "chosen": 1 }, { "character_name": "Riko Kashimoto (SSR) (PAL)", "event_name": "The Kashimoto Art of Tidying Up", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Failed training (Get Well Soon!)", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Extra Training", "chosen": 2 }, { "character_name": "King Halo (Original)", "event_name": "At Summer Camp (Year 2)", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "New Year's Shrine Visit", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Acupuncture (Just an Acupuncturist, No Worries! ☆)", "chosen": 4 }, { "character_name": "King Halo (Original)", "event_name": "Victory! (G1)\n1st", "chosen": 2 }, { "character_name": "King Halo (Original)", "event_name": "Victory! (G2/G3)\n1st", "chosen": 2 }, { "character_name": "King Halo (Original)", "event_name": "Victory! (Pre/OP)\n1st", "chosen": 2 }, { "character_name": "King Halo (Original)", "event_name": "Solid Showing (G1)\n2nd-5th", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Solid Showing (G2/G3)\n2nd-5th", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Solid Showing (Pre/OP)\n2nd-5th", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Defeat (G1)\n6th or worse", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Defeat (G2/G3)\n6th or worse", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Defeat (Pre/OP)\n6th or worse", "chosen": 1 }, { "character_name": "King Halo (Original)", "event_name": "Etsuko's Exhaustive Coverage (G1)", "chosen": 2 }, { "character_name": "King Halo (Original)", "event_name": "Etsuko's Exhaustive Coverage (G2/G3)", "chosen": 2 }, { "character_name": "King Halo (Original)", "event_name": "Etsuko's Exhaustive Coverage (Pre/OP)", "chosen": 2 }, { "character_name": "Unity Cup", "event_name": "A Team at Last", "chosen": 5 }, { "character_name": "King Halo (Original)", "event_name": "New Year's Resolutions", "chosen": 2 }, { "character_name": "Symboli Rudolf (Original)", "event_name": "The Emperor's Social Studies", "chosen": 2 }, { "character_name": "Symboli Rudolf (Original)", "event_name": "At Any Time", "chosen": 2 }, { "character_name": "Symboli Rudolf (Original)", "event_name": "Sudden Kindness", "chosen": 2 }, { "character_name": "Symboli Rudolf (Original)", "event_name": "As Good As My Word", "chosen": 2 }, { "character_name": "Symboli Rudolf (Original)", "event_name": "The Emperor's Satiation", "chosen": 2 }, { "character_name": "Symboli Rudolf (Original)", "event_name": "Birds of a Feather", "chosen": 2 }, { "character_name": "Symboli Rudolf (Original)", "event_name": "Well-Earned Respect", "chosen": 2 }, { "character_name": "Symboli Rudolf (Original)", "event_name": "A Clear and Beautiful Night", "chosen": 3 }, { "character_name": "Meisho Doto (Original)", "event_name": "A Little Bag of Help", "chosen": 2 }, { "character_name": "Meisho Doto (Original)", "event_name": "Best Shot", "chosen": 2 }, { "character_name": "Meisho Doto (Original)", "event_name": "First Step to Flawlessness", "chosen": 2 }, { "character_name": "Meisho Doto (Original)", "event_name": "Positively Tickled!", "chosen": 2 }, { "character_name": "Meisho Doto (Original)", "event_name": "Monumental Calories", "chosen": 2 }, { "character_name": "Meisho Doto (Original)", "event_name": "Pack a Punch", "chosen": 2 }, { "character_name": "Meisho Doto (Original)", "event_name": "Twilight Ice Cream", "chosen": 2 }, { "character_name": "Meisho Doto (Original)", "event_name": "Dance Lesson", "chosen": 2 }, { "character_name": "Silence Suzuka (SSR) (SPD)", "event_name": "What Should I Do?", "chosen": 2 }, { "character_name": "Silence Suzuka (SSR) (SPD)", "event_name": "On and On", "chosen": 1 }, { "character_name": "All Umamusume", "event_name": "Just an Acupuncturist, No Worries! ☆", "chosen": 4 }, { "character_name": "All Umamusume", "event_name": "Victory! (G1)", "chosen": 2 }, { "character_name": "All Umamusume", "event_name": "Victory! (G2/G3)", "chosen": 2 }, { "character_name": "All Umamusume", "event_name": "Victory! (Pre/OP)", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "A City Girl's Mood ♪", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "What's Prettier than Gold?", "chosen": 1 }, { "character_name": "Gold City (Festival)", "event_name": "A Quiet Talk Before the Show", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "City's Salon", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "Never Skip Meals", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "Dorm Quiz Battle", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "The Work of a Model", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "A Delicious Trap?", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "Might as Well", "chosen": 2 }, { "character_name": "Gold City (Festival)", "event_name": "Words Unspoken", "chosen": 1 }, { "character_name": "Gold City (Festival)", "event_name": "Barefoot", "chosen": 1 }, { "character_name": "Gold City (Festival)", "event_name": "Wanderlust", "chosen": 1 }, { "character_name": "Gold City (Festival)", "event_name": "Yoga Pose!", "chosen": 2 }, { "character_name": "Riko Kashimoto (SSR) (PAL)", "event_name": "Unexpected Side", "chosen": 2 }, { "character_name": "Tamamo Cross (SSR) (POW)", "event_name": "Tamamo's School Tour", "chosen": 2 }, { "character_name": "Tamamo Cross (SSR) (POW)", "event_name": "A Battle I Can't Lose!", "chosen": 2 }, { "character_name": "Zenno Rob Roy (SSR) (SPD)", "event_name": "(❯❯) The Bookworm and the Mage's Event", "chosen": 2 }, { "character_name": "Zenno Rob Roy (SSR) (SPD)", "event_name": "Book-lover Quirks", "chosen": 2 }, { "character_name": "Zenno Rob Roy (SSR) (SPD)", "event_name": "A Tale Entrusted", "chosen": 2 }, { "character_name": "Sweep Tosho (SR) (SPD)", "event_name": "Wonderful ☆ Mistake!", "chosen": 2 }, { "character_name": "Unity Cup", "event_name": "Tutorial", "chosen": 2 }] };
-const training_strategy = { "name": "default", "timeline": { "Junior Year Pre-Debut": "max_out_friendships", "Classic Year Early Sep": "rainbow_training_2", "Senior Year Early Jul": "meta_training", "Senior Year Early Sep": "rainbow_training_3", "Classic Year Late May": "rainbow_training" }, "stat_weight_sets": { "set_1": { "spd": 1.2, "sta": 1.1, "pwr": 0.75, "guts": 0.5, "wit": 1, "sp": 0.5 } }, "risk_taking_sets": { "set_1": { "rainbow_increase": 8, "normal_increase": 2 } }, "action_sequence_sets": { "set_1": ["infirmary", "training", "recreation", "rest", "race"] }, "target_stat_sets": { "set_1": { "spd": 600, "sta": 400, "pwr": 400, "guts": 300, "wit": 300 }, "set_2": { "spd": 800, "sta": 660, "pwr": 600, "guts": 400, "wit": 400 }, "set_3": { "spd": 1200, "sta": 800, "pwr": 900, "guts": 400, "wit": 400 } }, "templates": { "do_most_cards": { "training_function": "most_support_cards", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_1" }, "max_out_friendships": { "training_function": "max_out_friendships", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_1" }, "most_stat_gain": { "training_function": "most_stat_gain", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_1" }, "most_stat_gain_2": { "training_function": "most_stat_gain", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_2" }, "most_stat_gain_3": { "training_function": "most_stat_gain", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_3" }, "rainbow_training": { "training_function": "rainbow_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_1" }, "rainbow_training_2": { "training_function": "rainbow_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_2" }, "rainbow_training_3": { "training_function": "rainbow_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_3" }, "meta_training": { "training_function": "meta_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_1" }, "meta_training_2": { "training_function": "meta_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_2" }, "meta_training_3": { "training_function": "meta_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "stat_weight_set": "set_1", "target_stat_set": "set_3" } } };
-const window_name = "Bluestacks Umamusume";
+const race_turn_threshold = 5;
+const do_mission_races_if_possible = true;
+const prioritize_missions_over_g1 = true;
+const minimum_condition_severity = 1;
+const priority_weight = "MEDIUM";
+const minimum_mood = "GREAT";
+const minimum_mood_junior_year = "NORMAL";
+const maximum_failure = 20;
+const minimum_aptitudes = { "surface": "b", "distance": "b", "style": "c" };
+const rest_before_summer_energy = 60;
+const use_adb = true;
+const device_id = "127.0.0.1:5555";
+const notifications_enabled = true;
+const info_notification = "sfx_01.mp3";
+const error_notification = "sfx_02.mp3";
+const success_notification = "sfx_03.mp3";
+const notification_volume = 1;
+const use_race_schedule = true;
+const cancel_consecutive_race = true;
+const position_selection_enabled = true;
+const enable_positions_by_race = false;
+const preferred_position = "pace";
+const positions_by_race = { "sprint": "front", "mile": "pace", "medium": "pace", "long": "pace" };
+const race_schedule = [{ "name": "February Stakes", "year": "Senior Year", "date": "Late Feb" }, { "name": "Victoria Mile", "year": "Senior Year", "date": "Early May" }, { "name": "Yasuda Kinen", "year": "Senior Year", "date": "Early Jun" }, { "name": "Oka Sho", "year": "Classic Year", "date": "Early Apr" }, { "name": "Sprinters Stakes", "year": "Classic Year", "date": "Late Sep" }, { "name": "Takamatsunomiya Kinen", "year": "Senior Year", "date": "Late Mar" }, { "name": "Sprinters Stakes", "year": "Senior Year", "date": "Late Sep" }, { "name": "Mile Championship", "year": "Senior Year", "date": "Late Nov" }, { "name": "Mile Championship", "year": "Classic Year", "date": "Late Nov" }, { "name": "Yasuda Kinen", "year": "Classic Year", "date": "Early Jun" }, { "name": "NHK Mile Cup", "year": "Classic Year", "date": "Early May" }, { "name": "Hanshin Juvenile Fillies", "year": "Junior Year", "date": "Early Dec" }, { "name": "Champions Cup", "year": "Senior Year", "date": "Early Dec" }];
+const skill = { "is_auto_buy_skill": true, "skill_check_turns": 10, "check_skill_before_races": false, "skill_pts_check": 600, "skill_list": ["Steadfast", "Focus", "Gourmand", "Swinging Maestro", "Homestretch Haste", "Up-Tempo", "Prepared to Pass", "Race Planner", "Red Shift/LP1211-M", "Triumphant Pulse", "Straightaway Adept", "Professor of Curvature", "Stamina to Spare", "U=ma2", "Ramp Up"] };
+const event = { "use_optimal_event_choice": true, "event_choices": [{ "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Advice from an Older Student", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "As a Model Student...", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "At Summer Camp (Year 2) (Daiwa Scarlet)", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Can't Lose Sight of Number One!", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Dance Lesson (Daiwa Scarlet)", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Enjoying Number One", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Extra Training (Daiwa Scarlet)", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Get Well Soon! (Daiwa Scarlet)", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Her", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "How to Spend a Day Off", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Just a Little More (Daiwa Scarlet)", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Looking Good", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "New Year's Resolutions (Daiwa Scarlet)", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "New Year's Shrine Visit (Daiwa Scarlet)", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Rained On", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Recommended Restaurant", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "The Best Pose", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "The Weight of Racewear", "chosen": 1 }, { "character_name": "Daiwa Scarlet (Peak Blue),", "event_name": "Under the Evening Star", "chosen": 2 }, { "character_name": "Daiwa Scarlet (Peak Blue)", "event_name": "Don't Over Do it! (Daiwa Scarlet)", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "At Summer Camp (Year 2) (Oguri Cap)", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Better Than a Plushie", "chosen": 2 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Bottomless Pit", "chosen": 2 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Dance Lesson (Oguri Cap)", "chosen": 2 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Field Workout", "chosen": 2 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "High-Level Rival", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Lost Umamusume", "chosen": 2 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "New Year's Resolutions (Oguri Cap)", "chosen": 2 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "New Year's Shrine Visit (Oguri Cap)", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Oguri Makes a Resolution", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Oguri Matures", "chosen": 3 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Oguri Perseveres", "chosen": 2 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Oguri the Forest Guide?", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Oguri's Gluttony Championship", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Pinned Hopes", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Running on Full", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat),", "event_name": "Something Smells Good!", "chosen": 1 }, { "character_name": "Oguri Cap (Starlight Beat)", "event_name": "Extra Training (Oguri Cap)", "chosen": 2 }, { "character_name": "Kitasan Black (Fire at My Heels), Kitasan Black (Tracen Academy)", "event_name": "Ah, Friendship", "chosen": 2 }, { "character_name": "Kitasan Black (Fire at My Heels), Kitasan Black (Tracen Academy)", "event_name": "Ah, Home Sweet Home", "chosen": 2 }, { "character_name": "Kitasan Black (Fire at My Heels)", "event_name": "Paying it Forward", "chosen": 1 }, { "character_name": "Super Creek (Tracen Academy), Super Creek (Piece of Mind)", "event_name": "Leave it to Me to Be Considerate! ♪", "chosen": 2 }, { "character_name": "Super Creek (Tracen Academy), Super Creek (Piece of Mind)", "event_name": "Leave it to Me to Help Out! ♪", "chosen": 1 }, { "character_name": "Sweep Tosho (It's All Mine!), Sweep Tosho (Lamplit Training of a Witch-to-Be), Sweep Tosho (Tracen Academy)", "event_name": "Miracle ☆ Escape!", "chosen": 1 }, { "character_name": "Sweep Tosho (Lamplit Training of a Witch-to-Be)", "event_name": "Premeditated Mischief", "chosen": 1 }, { "character_name": "Sweep Tosho (Lamplit Training of a Witch-to-Be)", "event_name": "Some Very Green Friends", "chosen": 1 }, { "character_name": "Fine Motion (Tracen Academy), Fine Motion (Wave of Gratitude)", "event_name": "Reminiscent Clover", "chosen": 1 }, { "character_name": "Fine Motion (Tracen Academy), Fine Motion (Wave of Gratitude)", "event_name": "Wonderful New Shoes", "chosen": 1 }, { "character_name": "Fine Motion (Wave of Gratitude)", "event_name": "Lovely Training Weather ♪", "chosen": 2 }, { "character_name": "King Halo (Tracen Academy), King Halo (First-Rate Plan), King Halo (Tonight, We Waltz)", "event_name": "You May Advise Me!", "chosen": 2 }, { "character_name": "King Halo (Tracen Academy), King Halo (First-Rate Plan), King Halo (Tonight, We Waltz)", "event_name": "You May Socialize With Me!", "chosen": 2 }, { "character_name": "Unity Cup", "event_name": "A Team at Last", "chosen": 5 }, { "character_name": "Unity Cup", "event_name": "Tutorial", "chosen": 2 }] };
+const training_strategy = { "name": "default", "timeline": { "Junior Year Pre-Debut": "max_out_friendships", "Senior Year Early Jul": "meta_training_3", "Senior Year Early Sep": "rainbow_training_3", "Classic Year Late May": "rainbow_training", "Classic Year Early Aug": "rainbow_training_2" }, "stat_weight_sets": { "set_1": { "spd": 1, "sta": 1, "pwr": 0.8, "guts": 0.5, "wit": 1, "sp": 0.6 } }, "risk_taking_sets": { "set_1": { "rainbow_increase": 5, "normal_increase": 2 } }, "action_sequence_sets": { "set_1": ["infirmary", "training", "race", "recreation"] }, "target_stat_sets": { "set_1": { "spd": 600, "sta": 400, "pwr": 400, "guts": 300, "wit": 300 }, "set_2": { "spd": 800, "sta": 660, "pwr": 600, "guts": 400, "wit": 400 }, "set_3": { "spd": 1200, "sta": 800, "pwr": 900, "guts": 400, "wit": 400 } }, "templates": { "do_most_cards": { "training_function": "most_support_cards", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_1", "stat_weight_set": "set_1" }, "max_out_friendships": { "training_function": "max_out_friendships", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_1", "stat_weight_set": "set_1" }, "most_stat_gain": { "training_function": "most_stat_gain", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_1", "stat_weight_set": "set_1" }, "most_stat_gain_2": { "training_function": "most_stat_gain", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_2", "stat_weight_set": "set_1" }, "most_stat_gain_3": { "training_function": "most_stat_gain", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_3", "stat_weight_set": "set_1" }, "rainbow_training": { "training_function": "rainbow_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_1", "stat_weight_set": "set_1" }, "rainbow_training_2": { "training_function": "rainbow_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_2", "stat_weight_set": "set_1" }, "rainbow_training_3": { "training_function": "rainbow_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_3", "stat_weight_set": "set_1" }, "meta_training": { "training_function": "meta_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_1", "stat_weight_set": "set_1" }, "meta_training_2": { "training_function": "meta_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_2", "stat_weight_set": "set_1" }, "meta_training_3": { "training_function": "meta_training", "action_sequence_set": "set_1", "risk_taking_set": "set_1", "target_stat_set": "set_3", "stat_weight_set": "set_1" } } };
+const window_name = "Android Device";
 const rawConfig = {
   config_name,
   theme,
@@ -12148,15 +12148,19 @@ const rawConfig = {
   skip_training_energy,
   never_rest_energy,
   skip_infirmary_unless_missing_energy,
+  hint_hunting_enabled,
+  hint_hunting_weights,
+  use_skip_claw_machine,
   wit_training_score_ratio_threshold,
   rainbow_support_weight_addition,
   non_max_support_weight,
+  scenario_gimmick_weight,
   race_turn_threshold,
   do_mission_races_if_possible,
   prioritize_missions_over_g1,
   minimum_condition_severity,
-  minimum_mood,
   priority_weight,
+  minimum_mood,
   minimum_mood_junior_year,
   maximum_failure,
   minimum_aptitudes,
@@ -12174,10 +12178,6 @@ const rawConfig = {
   enable_positions_by_race,
   preferred_position,
   positions_by_race,
-  hint_hunting_enabled,
-  hint_hunting_weights,
-  use_skip_claw_machine,
-  scenario_gimmick_weight,
   race_schedule,
   skill,
   event,
@@ -15978,7 +15978,7 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$y = [
+const __iconNode$z = [
   [
     "path",
     {
@@ -15999,14 +15999,14 @@ const __iconNode$y = [
   ["circle", { cx: "20", cy: "21", r: ".5", key: "yhc1fs" }],
   ["circle", { cx: "20", cy: "8", r: ".5", key: "1e43v0" }]
 ];
-const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$y);
+const BrainCircuit = createLucideIcon("brain-circuit", __iconNode$z);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$x = [
+const __iconNode$y = [
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["path", { d: "M3 10h18", key: "8toen8" }],
@@ -16016,44 +16016,56 @@ const __iconNode$x = [
   ["path", { d: "M7 14h.01", key: "1qa3f1" }],
   ["path", { d: "M17 18h.01", key: "1bdyru" }]
 ];
-const CalendarRange = createLucideIcon("calendar-range", __iconNode$x);
+const CalendarRange = createLucideIcon("calendar-range", __iconNode$y);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$w = [
+const __iconNode$x = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
   ["path", { d: "M3 10h18", key: "8toen8" }]
 ];
-const Calendar = createLucideIcon("calendar", __iconNode$w);
+const Calendar = createLucideIcon("calendar", __iconNode$x);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$v = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$v);
+const __iconNode$w = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$w);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$u = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$u);
+const __iconNode$v = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$v);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$t = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$t);
+const __iconNode$u = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$u);
+/**
+ * @license lucide-react v0.541.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$t = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
+  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+];
+const CircleAlert = createLucideIcon("circle-alert", __iconNode$t);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
@@ -16062,10 +16074,9 @@ const ChevronUp = createLucideIcon("chevron-up", __iconNode$t);
  */
 const __iconNode$s = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
-  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ];
-const CircleAlert = createLucideIcon("circle-alert", __iconNode$s);
+const CircleCheck = createLucideIcon("circle-check", __iconNode$s);
 /**
  * @license lucide-react v0.541.0 - ISC
  *
@@ -37563,7 +37574,7 @@ function App() {
   }, []);
   const defaultConfig = rawConfig;
   const { activeIndex, activeConfig, presets, setActiveIndex, savePreset, updatePreset } = useConfigPreset();
-  const { config: config2, setConfig, saveConfig } = useConfig(activeConfig ?? defaultConfig);
+  const { config: config2, setConfig, saveConfig, toast } = useConfig(activeConfig ?? defaultConfig);
   const { fileInputRef, openFileDialog, handleImport } = useImportConfig({ activeIndex, updatePreset, savePreset });
   reactExports.useEffect(() => {
     if (presets[activeIndex]) {
@@ -37632,97 +37643,103 @@ function App() {
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex flex-col overflow-y-auto", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "p-6 w-full py-4 self-start border-b border-border flex items-end justify-between sticky top-0 z-10 backdrop-blur-md", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-end justify-between w-full", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-4", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "text-xs font-thin text-muted-foreground ml-1", children: "Configuration Preset" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-stretch shadow-sm bg-card rounded-md border border-input focus-within:ring-[3px] focus-within:ring-ring/50 focus-within:border-primary transition-all", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                Select,
-                {
-                  value: activeIndex.toString(),
-                  onValueChange: (v) => {
-                    setActiveIndex(parseInt(v));
-                    setIsEditing(false);
-                  },
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "w-auto min-w-42 bg-card rounded-r-none shadow-none border-0 transition-colors hover:bg-accent focus:ring-0 cursor-pointer", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Select Preset" }) }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: presets.map((preset, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: i.toString(), children: preset.name || `Preset ${i + 1}` }, i)) })
-                  ]
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  variant: "ghost",
-                  size: "smallicon",
-                  className: `rounded-l-none border-l border-input bg-card hover:bg-accent h-10 w-10 transition-colors shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 ${isEditing ? "text-primary" : "text-muted-foreground"}`,
-                  onClick: () => setIsEditing(!isEditing),
-                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 14, className: isEditing ? "fill-current" : "" })
-                }
-              )
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex w-fit gap-4 transition-all duration-300 ease-out overflow-x-hidden pb-2 -mb-2 items-end ${isEditing ? "max-w-[800px] opacity-100 translate-x-0" : "max-w-0 opacity-0 -translate-x-4 pointer-events-none"}`, children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-8 w-[1px] bg-border mb-1" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: "p-6 w-full py-4 self-start border-b border-border flex items-end justify-between sticky top-0 z-10 backdrop-blur-md", children: [
+        toast.show && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `absolute top-11 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-1 rounded-full text-sm font-medium animate-in fade-in zoom-in duration-300 border ${toast.isError ? "bg-destructive/10 border-destructive/20 text-destructive" : "bg-primary/10 border-primary/20 text-primary"}`, children: [
+          toast.isError ? /* @__PURE__ */ jsxRuntimeExports.jsx(CircleAlert, { size: 14 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { size: 14 }),
+          toast.message
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-end justify-between w-full", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-4", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "text-xs font-thin text-muted-foreground ml-1", children: "Name" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Input,
-                {
-                  className: "w-42 shadow-sm bg-card",
-                  value: config2.config_name,
-                  onChange: (e) => updateConfig("config_name", e.target.value)
-                }
-              )
+              /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "text-xs font-thin text-muted-foreground ml-1", children: "Configuration Preset" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-stretch shadow-sm bg-card rounded-md border border-input focus-within:ring-[3px] focus-within:ring-ring/50 focus-within:border-primary transition-all", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  Select,
+                  {
+                    value: activeIndex.toString(),
+                    onValueChange: (v) => {
+                      setActiveIndex(parseInt(v));
+                      setIsEditing(false);
+                    },
+                    children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "w-auto min-w-42 bg-card rounded-r-none shadow-none border-0 transition-colors hover:bg-accent focus:ring-0 cursor-pointer", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Select Preset" }) }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: presets.map((preset, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: i.toString(), children: preset.name || `Preset ${i + 1}` }, i)) })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Button,
+                  {
+                    variant: "ghost",
+                    size: "smallicon",
+                    className: `rounded-l-none border-l border-input bg-card hover:bg-accent h-10 w-10 transition-colors shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 ${isEditing ? "text-primary" : "text-muted-foreground"}`,
+                    onClick: () => setIsEditing(!isEditing),
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 14, className: isEditing ? "fill-current" : "" })
+                  }
+                )
+              ] })
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "text-xs font-thin text-muted-foreground ml-1", children: [
-                "Uma ",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-slate-800/40", children: "(Theme)" })
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex w-fit gap-4 transition-all duration-300 ease-out overflow-x-hidden pb-2 -mb-2 items-end ${isEditing ? "max-w-[800px] opacity-100 translate-x-0" : "max-w-0 opacity-0 -translate-x-4 pointer-events-none"}`, children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-8 w-[1px] bg-border mb-1" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "text-xs font-thin text-muted-foreground ml-1", children: "Name" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Input,
+                  {
+                    className: "w-42 shadow-sm bg-card",
+                    value: config2.config_name,
+                    onChange: (e) => updateConfig("config_name", e.target.value)
+                  }
+                )
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: effectiveThemeId, onValueChange: (v) => updateConfig("theme", v), children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "min-w-42 shadow-sm bg-card", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Loading Themes..." }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: themes.filter((t) => t && t.id).map((theme2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: theme2.id, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-3 h-3 rounded-full", style: { backgroundColor: theme2.primary } }),
-                  theme2.label
-                ] }) }, theme2.id)) })
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "text-xs font-thin text-muted-foreground ml-1", children: [
+                  "Uma ",
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-slate-800/40", children: "(Theme)" })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: effectiveThemeId, onValueChange: (v) => updateConfig("theme", v), children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "min-w-42 shadow-sm bg-card", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Loading Themes..." }) }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: themes.filter((t) => t && t.id).map((theme2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: theme2.id, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-3 h-3 rounded-full", style: { backgroundColor: theme2.primary } }),
+                    theme2.label
+                  ] }) }, theme2.id)) })
+                ] })
               ] })
             ] })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex relative gap-3 pl-3", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm absolute top-[-1rem] end-px align-right text-muted-foreground -mt-2 w-fit whitespace-nowrap", children: [
-            "Press ",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-primary", children: "F1" }),
-            " to start/stop training."
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              variant: "outline",
-              size: "icon",
-              className: "uma-btn h-10 w-10",
-              onClick: () => setIsDark(!isDark),
-              children: isDark ? /* @__PURE__ */ jsxRuntimeExports.jsx(Sun, { size: 18 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Moon, { size: 18 })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: "uma-btn", variant: "outline", onClick: openFileDialog, children: "Import" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "file", ref: fileInputRef, onChange: handleImport, className: "hidden" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              className: "uma-btn font-bold",
-              onClick: () => {
-                savePreset(config2);
-                saveConfig();
-                setIsEditing(false);
-              },
-              children: "Save Changes"
-            }
-          )
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex relative gap-3 pl-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm absolute top-[-1rem] end-px align-right text-muted-foreground -mt-2 w-fit whitespace-nowrap", children: [
+              "Press ",
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-primary", children: "F1" }),
+              " to start/stop training."
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button,
+              {
+                variant: "outline",
+                size: "icon",
+                className: "uma-btn h-10 w-10",
+                onClick: () => setIsDark(!isDark),
+                children: isDark ? /* @__PURE__ */ jsxRuntimeExports.jsx(Sun, { size: 18 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Moon, { size: 18 })
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: "uma-btn", variant: "outline", onClick: openFileDialog, children: "Import" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "file", ref: fileInputRef, onChange: handleImport, className: "hidden" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button,
+              {
+                className: "uma-btn font-bold",
+                onClick: () => {
+                  savePreset(config2);
+                  saveConfig();
+                  setIsEditing(false);
+                },
+                children: "Save Changes"
+              }
+            )
+          ] })
         ] })
-      ] }) }),
+      ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-6 flex flex-col gap-y-6 w-full min-h-[calc(100vh-6.2rem)] items-center transition-all animate-in fade-in slide-in-from-bottom-2 duration-300", children: renderContent() })
     ] })
   ] });
