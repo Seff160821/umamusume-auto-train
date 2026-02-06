@@ -556,16 +556,8 @@
     top: calc(var(--spacing) * 5);
   }
 
-  .top-6 {
-    top: calc(var(--spacing) * 6);
-  }
-
   .top-11 {
     top: calc(var(--spacing) * 11);
-  }
-
-  .top-12 {
-    top: calc(var(--spacing) * 12);
   }
 
   .top-\[-1rem\] {
