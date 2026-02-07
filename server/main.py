@@ -1,17 +1,38 @@
-from fastapi import FastAPI
-from fastapi.responses import FileResponse, PlainTextResponse
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse, PlainTextResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
 import os
 import json
+import re
 import core.bot as bot
 
 from server.utils import load_config, save_config, save_theme
 
 app = FastAPI()
 
+# resolved base dirs
+DATA_DIR = Path("data").resolve()
+WEB_DIR = Path("web/dist").resolve()
+THEMES_DIR = Path("themes").resolve()
+
+def safe_resolve(base: Path, user_input: str) -> Path:
+  """Resolve user path and block directory traversal (e.g. ../../)."""
+  target = (base / user_input).resolve()
+  if not target.is_relative_to(base):
+    raise HTTPException(status_code=400, detail="Invalid path")
+  return target
+
+def safe_name(name: str) -> str:
+  """Allow only simple filenames — no slashes, dots, or traversal."""
+  if not re.match(r'^[a-zA-Z0-9_-]+$', name):
+    raise HTTPException(status_code=400, detail="Invalid name")
+  return name
+
+# restrict CORS to localhost
 app.add_middleware(
   CORSMiddleware,
-  allow_origins=["*"],
+  allow_origin_regex=r"^http://(localhost|127\.0\.0\.1)(:\d+)?$",
   allow_credentials=True,
   allow_methods=["*"],
   allow_headers=["*"],
@@ -49,12 +70,13 @@ def list_all_themes():
   
 @app.get("/theme/{name}")
 def get_theme(name: str):
-  with open(f"themes/{name}.json", "r") as f:
+  file_path = safe_resolve(THEMES_DIR, f"{safe_name(name)}.json")
+  with open(file_path, "r") as f:
     return JSONResponse(content=json.load(f))
 
 @app.post("/theme/{name}")
 def update_theme(new_theme: dict, name: str):
-  save_theme(new_theme, name)
+  save_theme(new_theme, safe_name(name))
   return {"status": "success", "data": new_theme, "name": name}
 
 @app.get("/config")
@@ -98,9 +120,9 @@ def get_event(text: str):
 
 @app.get("/data/{path:path}")
 async def get_data_file(path: str):
-  file_path = os.path.join("data", path)
-  if os.path.isfile(file_path):
-    return FileResponse(file_path, headers={
+  file_path = safe_resolve(DATA_DIR, path)
+  if file_path.is_file():
+    return FileResponse(str(file_path), headers={
       "Cache-Control": "no-cache, no-store, must-revalidate",
       "Pragma": "no-cache",
       "Expires": "0"
@@ -119,15 +141,15 @@ async def root_index():
 
 @app.get("/{path:path}")
 async def fallback(path: str):
-  file_path = os.path.join(PATH, path)
+  file_path = safe_resolve(WEB_DIR, path)
   headers = {
     "Cache-Control": "no-cache, no-store, must-revalidate",
     "Pragma": "no-cache",
     "Expires": "0"
   }
 
-  if os.path.isfile(file_path):
-    media_type = "application/javascript" if file_path.endswith((".js", ".mjs")) else None
-    return FileResponse(file_path, media_type=media_type, headers=headers)
+  if file_path.is_file():
+    media_type = "application/javascript" if str(file_path).endswith((".js", ".mjs")) else None
+    return FileResponse(str(file_path), media_type=media_type, headers=headers)
 
   return FileResponse(os.path.join(PATH, "index.html"), headers=headers)
