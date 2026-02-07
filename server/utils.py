@@ -16,6 +16,6 @@ def save_config(data: dict):
     json.dump(data, f, indent=2)
 
 def save_theme(data: dict, name: str):
-  THEME_FILE_PATH = THEME_PATH +"/"+ name + ".json"
-  with open(THEME_FILE_PATH, "w") as f:
+  file_path = THEME_PATH / f"{name}.json"
+  with open(file_path, "w") as f:
     json.dump(data, f, indent=2)
