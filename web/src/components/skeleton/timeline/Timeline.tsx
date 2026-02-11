@@ -1,6 +1,6 @@
 import { REAL_CALENDAR } from "@/constants/race.constant";
 import type { Config, UpdateConfigType } from "@/types";
-import { Triangle, Trash } from "lucide-react";
+import { Triangle } from "lucide-react";
 import { colorFromString } from "@/components/skeleton/ColorFromString";
 import { useRef, useState } from "react";
 
@@ -11,6 +11,8 @@ type Props = {
 
 export default function Timeline({ config, updateConfig }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const dragDropOccurredRef = useRef(false);
+  const dragSourceKeyRef = useRef<string | null>(null);
   const [dragOverKey, setDragOverKey] = useState<string | null>(null);
 
   const {
@@ -87,17 +89,24 @@ export default function Timeline({ config, updateConfig }: Props) {
                   e.preventDefault();
                   setDragOverKey(null);
                   const templateName = e.dataTransfer.getData("templateName");
+                  const sourceKey = e.dataTransfer.getData("sourceKey");
+                  // mark that a drop occurred on the timeline
+                  dragDropOccurredRef.current = true;
                   if (templateName) {
+                    const newTimeline = {
+                      ...config.training_strategy.timeline,
+                      [item.key]: templateName,
+                    } as Record<string, string>;
+                    if (sourceKey && sourceKey !== item.key) {
+                      delete newTimeline[sourceKey];
+                    }
                     updateConfig("training_strategy", {
                       ...config.training_strategy,
-                      timeline: {
-                        ...config.training_strategy.timeline,
-                        [item.key]: templateName,
-                      },
+                      timeline: newTimeline,
                     });
                   }
                 }}
-                className={`flex-1 min-h-32 pb-6 pt-1 border-r border-dotted flex items-center justify-center transition-all hover:opacity-80
+                className={`flex-1 min-h-32 py-6 pt-7 border-r border-dotted flex items-center justify-center transition-all hover:opacity-80
                   ${item.assignedTemplate ? "border-l-2 border-l-solid min-w-12" : ""} 
                   ${isYearStart ? "border-l-0 border-l-card !border-b-timeline" : "!border-b-timeline !border-b-foreground"} 
                   ${isYearEnd ? "border-r-2 border-dashed !border-r-background" : ""}
@@ -105,12 +114,31 @@ export default function Timeline({ config, updateConfig }: Props) {
                 style={{ backgroundColor: color.backgroundColor, borderColor: color.borderColor }}
               >
                 {item.assignedTemplate ? (
-                  <div className="[writing-mode:sideways-lr] relative cursor-pointer flex flex-row items-stretch content-center"
+                  <div
+                    className="[writing-mode:sideways-lr] relative cursor-grab active:cursor-grabbing flex flex-row items-stretch content-center"
+                    draggable
+                    onDragStart={(e) => {
+                      e.dataTransfer.setData("templateName", item.assignedTemplate);
+                      e.dataTransfer.setData("sourceKey", item.key);
+                      e.dataTransfer.effectAllowed = "move";
+                      dragDropOccurredRef.current = false;
+                      dragSourceKeyRef.current = item.key;
+                    }}
+                    onDragEnd={() => {
+                      // If no drop occurred on the timeline, remove the original assignment
+                      if (!dragDropOccurredRef.current && dragSourceKeyRef.current) {
+                        const newTimeline = { ...config.training_strategy.timeline };
+                        delete newTimeline[dragSourceKeyRef.current];
+                        updateConfig("training_strategy", { ...config.training_strategy, timeline: newTimeline });
+                      }
+                      dragSourceKeyRef.current = null;
+                      dragDropOccurredRef.current = false;
+                    }}
                     onClick={(e) => {
                       e.stopPropagation();
                       const newTimeline = { ...config.training_strategy.timeline };
                       delete newTimeline[item.key];
-                      updateConfig("training_strategy", { ...config.training_strategy, timeline: newTimeline, });
+                      updateConfig("training_strategy", { ...config.training_strategy, timeline: newTimeline });
                     }}
                   >
 
@@ -118,9 +146,11 @@ export default function Timeline({ config, updateConfig }: Props) {
                       {item.assignedTemplate.replaceAll("_", " ")}
                     </div>
 
+                    {/*
                     <div className="mb-2 p-0.75 w-5 h-5 relative bg-white border shadow-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity" >
                       <Trash size={12} className=" text-slate-400 hover:text-red-500" />
                     </div>
+                    */}
 
                   </div>
                 ) : (
