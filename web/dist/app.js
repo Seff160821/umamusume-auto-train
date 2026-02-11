@@ -37440,11 +37440,11 @@ function Timeline({ config: config2, updateConfig }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "div",
             {
-              className: `absolute -top-3 left-1/2 translate-x-[-0.5rem] pointer-events-none w-0 overflow-visible transition-all duration-200 ${item.assignedTemplate || dragOverKey === item.key ? "opacity-100" : "opacity-0 group-hover:opacity-100"} ${dragOverKey === item.key ? "z-50" : ""}`,
+              className: `absolute -top-3 left-1/2 translate-x-[-0.5rem] pointer-events-none w-0 overflow-visible transition-all duration-200 ease-out ${item.assignedTemplate || dragOverKey === item.key ? "opacity-100" : "opacity-0 group-hover:opacity-100"} ${dragOverKey === item.key ? "z-50" : ""}`,
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "div",
                 {
-                  className: `-rotate-60 whitespace-nowrap capitalize text-muted-foreground origin-top-left font-semibold tracking-tighter transition-all duration-300 ${dragOverKey === item.key ? "text-sm -top-3.5" : "text-xs"}`,
+                  className: `-rotate-60 whitespace-nowrap capitalize text-muted-foreground origin-top-left font-semibold tracking-tighter transition-all duration-300 ease-out ${dragOverKey === item.key ? "text-sm -top-3.5" : "text-xs"}`,
                   children: item.date
                 }
               )
@@ -37453,6 +37453,32 @@ function Timeline({ config: config2, updateConfig }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "div",
             {
+              draggable: !!item.assignedTemplate,
+              onDragStart: (e) => {
+                if (!item.assignedTemplate) return;
+                e.dataTransfer.setData("templateName", item.assignedTemplate);
+                e.dataTransfer.setData("sourceKey", item.key);
+                e.dataTransfer.effectAllowed = "move";
+                dragDropOccurredRef.current = false;
+                dragSourceKeyRef.current = item.key;
+              },
+              onDragEnd: () => {
+                if (!item.assignedTemplate) return;
+                if (!dragDropOccurredRef.current && dragSourceKeyRef.current) {
+                  const newTimeline = { ...config2.training_strategy.timeline };
+                  delete newTimeline[dragSourceKeyRef.current];
+                  updateConfig("training_strategy", { ...config2.training_strategy, timeline: newTimeline });
+                }
+                dragSourceKeyRef.current = null;
+                dragDropOccurredRef.current = false;
+              },
+              onClick: (e) => {
+                if (!item.assignedTemplate) return;
+                e.stopPropagation();
+                const newTimeline = { ...config2.training_strategy.timeline };
+                delete newTimeline[item.key];
+                updateConfig("training_strategy", { ...config2.training_strategy, timeline: newTimeline });
+              },
               onDragOver: (e) => {
                 e.preventDefault();
                 setDragOverKey(item.key);
@@ -37480,8 +37506,8 @@ function Timeline({ config: config2, updateConfig }) {
                   });
                 }
               },
-              className: `flex-1 min-h-32 py-6 pt-7 border-r border-dotted flex items-center justify-center transition-all hover:opacity-80
-                  ${item.assignedTemplate ? "border-l-2 border-l-solid min-w-12" : ""} 
+              className: `flex-1 min-h-32 py-6 pt-7 border-r border-dotted flex items-center justify-center transition-all ease-out hover:opacity-80
+                  ${item.assignedTemplate ? "border-l-2 border-l-solid min-w-12 cursor-grab active:cursor-grabbing" : ""} 
                   ${isYearStart ? "border-l-0 border-l-card !border-b-timeline" : "!border-b-timeline !border-b-foreground"} 
                   ${isYearEnd ? "border-r-2 border-dashed !border-r-background" : ""}
                   ${item.year === "Finale Underway" ? "!border-r-0 !border-b-timeline" : "left-0"}`,
@@ -37489,30 +37515,7 @@ function Timeline({ config: config2, updateConfig }) {
               children: item.assignedTemplate ? /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "div",
                 {
-                  className: "[writing-mode:sideways-lr] relative cursor-grab active:cursor-grabbing flex flex-row items-stretch content-center",
-                  draggable: true,
-                  onDragStart: (e) => {
-                    e.dataTransfer.setData("templateName", item.assignedTemplate);
-                    e.dataTransfer.setData("sourceKey", item.key);
-                    e.dataTransfer.effectAllowed = "move";
-                    dragDropOccurredRef.current = false;
-                    dragSourceKeyRef.current = item.key;
-                  },
-                  onDragEnd: () => {
-                    if (!dragDropOccurredRef.current && dragSourceKeyRef.current) {
-                      const newTimeline = { ...config2.training_strategy.timeline };
-                      delete newTimeline[dragSourceKeyRef.current];
-                      updateConfig("training_strategy", { ...config2.training_strategy, timeline: newTimeline });
-                    }
-                    dragSourceKeyRef.current = null;
-                    dragDropOccurredRef.current = false;
-                  },
-                  onClick: (e) => {
-                    e.stopPropagation();
-                    const newTimeline = { ...config2.training_strategy.timeline };
-                    delete newTimeline[item.key];
-                    updateConfig("training_strategy", { ...config2.training_strategy, timeline: newTimeline });
-                  },
+                  className: "[writing-mode:sideways-lr] relative flex flex-row items-stretch content-center pointer-events-none",
                   children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-slate-800 whitespace-nowrap font-semibold flex-1 text-sm", children: item.assignedTemplate.replaceAll("_", " ") })
                 }
               ) : /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {})
