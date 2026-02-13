@@ -140,6 +140,10 @@
   }
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 .text-primary {
   transition: color 0.2s ease;
 }
@@ -151,7 +155,7 @@
 
 .bg-triangles::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-image: url(assets/background.jpg);
   background-position: center;

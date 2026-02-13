@@ -91,6 +91,7 @@
   :root, :host {
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --color-red-50: oklch(97.1% .013 17.38);
     --color-red-200: oklch(88.5% .062 18.334);
     --color-red-500: oklch(63.7% .237 25.331);
     --color-red-600: oklch(57.7% .245 27.325);
@@ -520,6 +521,14 @@
     inset-inline-end: 1px;
   }
 
+  .-top-2 {
+    top: calc(var(--spacing) * -2);
+  }
+
+  .-top-2\.5 {
+    top: calc(var(--spacing) * -2.5);
+  }
+
   .-top-3 {
     top: calc(var(--spacing) * -3);
   }
@@ -566,6 +575,10 @@
 
   .top-\[50\%\] {
     top: 50%;
+  }
+
+  .-right-4 {
+    right: calc(var(--spacing) * -4);
   }
 
   .right-0 {
@@ -1797,6 +1810,16 @@
     border-right-width: 1px;
   }
 
+  .border-r-0 {
+    border-right-style: var(--tw-border-style);
+    border-right-width: 0;
+  }
+
+  .border-r-1 {
+    border-right-style: var(--tw-border-style);
+    border-right-width: 1px;
+  }
+
   .border-r-2 {
     border-right-style: var(--tw-border-style);
     border-right-width: 2px;
@@ -1820,6 +1843,11 @@
   .border-l-0 {
     border-left-style: var(--tw-border-style);
     border-left-width: 0;
+  }
+
+  .border-l-1 {
+    border-left-style: var(--tw-border-style);
+    border-left-width: 1px;
   }
 
   .border-l-2 {
@@ -1954,6 +1982,16 @@
 
   .border-transparent {
     border-color: #0000;
+  }
+
+  .border-white\/40 {
+    border-color: #fff6;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-white\/40 {
+      border-color: color-mix(in oklab, var(--color-white) 40%, transparent);
+    }
   }
 
   .border-yellow-300 {
@@ -2256,6 +2294,10 @@
     padding-block: calc(var(--spacing) * 6);
   }
 
+  .py-10 {
+    padding-block: calc(var(--spacing) * 10);
+  }
+
   .py-12 {
     padding-block: calc(var(--spacing) * 12);
   }
@@ -2266,6 +2308,10 @@
 
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
+  }
+
+  .pt-7 {
+    padding-top: calc(var(--spacing) * 7);
   }
 
   .pt-16 {
@@ -3180,6 +3226,10 @@
       }
     }
 
+    .hover\:bg-red-50:hover {
+      background-color: var(--color-red-50);
+    }
+
     .hover\:bg-secondary\/80:hover {
       background-color: var(--secondary);
     }
@@ -3889,6 +3939,10 @@
   --chart-5: oklch(64.5% .246 16.439);
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 .text-primary {
   transition: color .2s;
 }
@@ -3906,7 +3960,7 @@
   background-position: center;
   background-size: cover;
   transition: filter .3s ease-out;
-  position: absolute;
+  position: fixed;
   inset: 0;
 }
 
