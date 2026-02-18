@@ -56,9 +56,9 @@ def world_to_screen_space(x, y):
 
   # Remove centered crop
   if cut_sides:
-    x -= crop_pixels / 2
+    x -= crop_pixels // 2
   else:
-    y -= crop_pixels / 2
+    y -= crop_pixels // 2
 
   # Apply uniform scaling
   x *= scale
@@ -80,9 +80,9 @@ def screen_space_to_world(x, y):
 
   # Restore centered crop offset
   if cut_sides:
-    x += crop_pixels / 2
+    x += crop_pixels // 2
   else:
-    y += crop_pixels / 2
+    y += crop_pixels // 2
 
   return x, y
 
