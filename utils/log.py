@@ -185,6 +185,16 @@ def debug_window(screen, wait_timer=0, x=-1400, y=-100, save_name=None, show_on_
 
 def record_turn(state, last_state, action):
   debug(f"Recording turn.")
+  if action.func == "do_training":
+    action_info = action.func + " | " + action["training_name"]
+  else:
+    action_info = action.func
+  #spaces in front of lines in this info block is important.
+  info(f"User Info Block:\n\
+  Year: {state["year"]} / Turns left until goal: {state["turn"]}\n\
+  Mood: {state["current_mood"]}, Energy: {state["energy_level"]}/{state["max_energy"]}\n\
+  Current Stats: {state["current_stats"]}\n\
+  Action: {action_info}")
   if state["year"] == "Junior Year Pre-Debut":
     turn = f"{state['year']}, {state['turn']}"
   else:
