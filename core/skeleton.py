@@ -17,7 +17,7 @@ from core.skill import buy_skill, init_skill_py
 pyautogui.useImageNotFoundException(False)
 
 import core.bot as bot
-from utils.log import info, warning, error, debug, log_encoded, args, record_turn, VERSION
+from utils.log import info, warning, error, debug, log_encoded, args, record_turn, user_info_block, VERSION
 from utils.device_action_wrapper import BotStopException
 import utils.device_action_wrapper as device_action
 
@@ -353,6 +353,7 @@ def career_lobby(dry_run_turn=False):
 
 def record_and_finalize_turn(state_obj, action):
   global last_state, action_count
+  user_info_block(state_obj, last_state, action)
   if args.debug is not None:
     record_turn(state_obj, last_state, action)
     last_state = state_obj

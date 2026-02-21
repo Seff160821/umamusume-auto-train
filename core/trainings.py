@@ -21,7 +21,7 @@ def create_training_score_entry(training_name, training_data, score_tuple):
     Dictionary with standardized training score data
   """
   total_rainbow_friends = training_data[training_name]["friendship_levels"]["yellow"] + training_data[training_name]["friendship_levels"]["max"]
-  total_friendship_increases = training_data[training_name]["total_friendship_levels"]["gray"] + training_data[training_name]["total_friendship_levels"]["blue"] + training_data[training_name]["total_friendship_levels"]["green"]
+  total_friendship_increases = training_data["total_friendship_levels"]["gray"] + training_data["total_friendship_levels"]["blue"] + training_data["total_friendship_levels"]["green"]
 
   entry = {
     "score_tuple": score_tuple,
@@ -333,7 +333,7 @@ def filter_safe_trainings(state, training_template, use_risk_taking=False, check
       # Check failure rate with dynamic threshold
       failure_rate = int(training_data["failure"])
       if failure_rate > max_allowed_failure:
-        debug(f"Skipping {training_name.upper()}: {failure_rate}% > {max_allowed_failure}% (base: {config.MAX_FAILURE}, bonus: +{risk_increase})")
+        info(f"Skipping {training_name.upper()}: {failure_rate}% > {max_allowed_failure}% (base: {config.MAX_FAILURE}, bonus: +{risk_increase})")
         continue
       else:
         debug(f"Fail rate of {training_name.upper()}: {failure_rate}% < {max_allowed_failure}% (base: {config.MAX_FAILURE}, bonus: +{risk_increase})")
@@ -341,7 +341,7 @@ def filter_safe_trainings(state, training_template, use_risk_taking=False, check
       # No risk taking - use base failure rate only
       failure_rate = int(training_data["failure"])
       if failure_rate > config.MAX_FAILURE:
-        debug(f"Skipping {training_name.upper()}: {failure_rate}% > {config.MAX_FAILURE}% (no risk tolerance)")
+        info(f"Skipping {training_name.upper()}: {failure_rate}% > {config.MAX_FAILURE}% (no risk tolerance)")
         continue
       else:
         debug(f"Fail rate of training {training_name.upper()}: {failure_rate}% < {config.MAX_FAILURE}% (no risk tolerance)")
