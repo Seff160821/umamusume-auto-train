@@ -193,11 +193,11 @@ def user_info_block(state, last_state, action):
     for training_name, training_data in action["available_trainings"].items():
       string_block = ""
       if training_data["total_rainbow_friends"] > 0:
-        string_block += f"Rainbow {training_data["total_rainbow_friends"]}, "
+        string_block += f"Rainbow {training_data['total_rainbow_friends']}, "
       if training_data["total_friendship_increases"] > 0:
-        string_block += f"Non-max {training_data["total_friendship_increases"]}, "
+        string_block += f"Non-max {training_data['total_friendship_increases']}, "
       if training_data["total_supports"] > 0:
-        string_block += f"Non-rainbow {training_data["total_supports"] - training_data["total_rainbow_friends"]}, "
+        string_block += f"Non-rainbow {training_data['total_supports'] - training_data['total_rainbow_friends']}, "
       for unity_element in ["unity_gauge_fills", "unity_spirit_explosions", "unity_trainings"]:
         if training_data.get(unity_element, False):
           if training_data[unity_element] > 0:
@@ -210,9 +210,9 @@ def user_info_block(state, last_state, action):
     training_info = "No info."
   #spaces in front of lines in this info block is important.
   info(f"User Info Block:\n\
-  Year: {state["year"]} / Turns left until goal: {state["turn"]}\n\
-  Mood: {state["current_mood"]}, Energy: {state["energy_level"]}/{state["max_energy"]}\n\
-  Current Stats: {state["current_stats"]}\n\
+  Year: {state['year']} / Turns left until goal: {state['turn']}\n\
+  Mood: {state['current_mood']}, Energy: {state['energy_level']}/{state['max_energy']}\n\
+  Current Stats: {state['current_stats']}\n\
   Action: {action_info}\n\
   Available Training Info:\n\
     {training_info}")
